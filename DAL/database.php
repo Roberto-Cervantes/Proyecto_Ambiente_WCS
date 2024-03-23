@@ -1,38 +1,39 @@
 <?php
-class Database
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "sc502_proyecto";
+
+function Conectar()
 {
-    private static $dbName = 'sc502_proyecto' ;
-    private static $dbHost = 'localhost' ;
-    private static $dbUsername = 'root';
-    private static $dbUserPassword = '';
-     
-    private static $cont  = null;
-     
-    public function __construct() {
-        die('Init function is not allowed');
+    global $servername, $username, $password, $dbname;
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
-     
-    public static function connect()
-    {
-       // One connection through whole application
-       if ( null == self::$cont )
-       {     
-        try
-        {
-          self::$cont =  new PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbName, 
-          self::$dbUsername, self::$dbUserPassword);  
-        }
-        catch(PDOException $e)
-        {
-          die($e->getMessage()); 
-        }
-       }
-       return self::$cont;
-    }
-     
-    public static function disconnect()
-    {
-        self::$cont = null;
-    }
+    return $conn;
 }
-?>
+
+
+
+
+
+
+
+
+
+/*
+// prepare and bind
+$stmt = $conn->prepare("INSERT INTO provincias (id_provincia, nombre) VALUES (?, ?)");
+$stmt->bind_param("is", $id_provincias, $nombres);
+
+// set parameters and execute
+$id_provincias = 0;
+$nombres = "Changuinola";
+$stmt->execute();
+
+echo "New records created successfully";
+
+$stmt->close();
+*/
