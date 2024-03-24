@@ -16,7 +16,7 @@
             </div>
             <div class="modal-body">
 
-                <form action="../DAL/funciones.php" method="POST">
+                <form action="../DAL/funciones_provincias.php" method="POST">
 
                     <div class="row">
                         <div class="col-sm-6">

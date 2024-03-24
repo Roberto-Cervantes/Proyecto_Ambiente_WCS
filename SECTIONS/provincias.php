@@ -1,6 +1,6 @@
 <?php
 //require_once "DAL/database.php";
-require_once "../DAL/funciones.php";
+require_once "../DAL/funciones_provincias.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
