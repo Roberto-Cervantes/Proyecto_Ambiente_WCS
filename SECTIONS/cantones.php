@@ -1,5 +1,5 @@
 <?php
-require_once "../DAL/funciones_provincias.php";
+require_once "../DAL/funciones_cantones.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,51 +16,53 @@ require_once "../DAL/funciones_provincias.php";
     ?>
     <div class="container">
         <div class="row">
-            <h3>PROVINCIAS DE COSTA RICA</h3>
+            <h3>CANTONES DE COSTA RICA</h3>
         </div>
         <div class="row">
             <p>
                 <?php
                 echo '<button type="button" class="btn btn-success" data-toggle="modal" 
                 data-target="#insertar">
-                <i class="fa fa-edit ">Nueva Provincia</i></button>';
-                require "PROVINCIAS/insertar_provincias.php";
+                <i class="fa fa-edit ">Nuevo Canton</i></button>';
+                require "CANTONES/insertar_cantones.php";
                 ?>
             </p>
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Id provincia</th>
+                        <th>Id Canton</th>
                         <th>Nombre</th>
+                        <th>Provincia</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <?php
-                    $result = getProvincias();
+                    $result = getCantones();
                     if ($result->num_rows > 0) {
                         foreach ($result as $row) {
                             echo '<tr>';
-                            echo '<td>' . $row['id_provincia'] . '</td>';
+                            echo '<td>' . $row['id_canton'] . '</td>';
                             echo '<td>' . $row['nombre'] . '</td>';
+                            echo '<td>' . getProvincia($row['provincia_id']) . '</td>';
                             echo '<td width=250>';
                             echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
-                            data-target="#ver' . $row['id_provincia'] . ' ">
+                            data-target="#ver' . $row['id_canton'] . ' ">
                             <i class="fa fa-edit ">Ver</i></button>';
                             echo ' ';
                             echo '<button type="button" class="btn btn-success" data-toggle="modal" 
-                            data-target="#editar' . $row['id_provincia'] . ' ">
+                            data-target="#editar' . $row['id_canton'] . ' ">
                             <i class="fa fa-edit ">Actualizar</i></button>';
                             echo ' ';
                             echo '<button type="button" class="btn btn-danger" data-toggle="modal" 
-                            data-target="#borrar' . $row['id_provincia'] . ' ">
+                            data-target="#borrar' . $row['id_canton'] . ' ">
                             <i class="fa fa-edit ">Borrar</i></button>';
                             echo ' ';
                             echo '</td>';
-                            require "PROVINCIAS/editar_provincias.php";
-                            require "PROVINCIAS/ver_provincias.php";
-                            require "PROVINCIAS/borrar_provincias.php";
+                            require "CANTONES/editar_cantones.php";
+                            require "CANTONES/ver_cantones.php";
+                            require "CANTONES/borrar_cantones.php";
                             echo '</tr>';
                         }
                     } else {
