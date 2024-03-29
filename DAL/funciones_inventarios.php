@@ -9,115 +9,105 @@ function Desconectar()
     $conn->close();
 }
 
-
-// obtener el listados de todos los distritos
-function getDistritos()
+function getinventarios()
 {
     global $conn;
-    $sql_select_distritos = "select id_distritos, nombre, canton_id from distritos";
-    return $result = $conn->query($sql_select_distritos);
+    $sql_select_inventarios = "select id_inventarios, nombre, almacenes_id from inventarios";
+    return $result = $conn->query($sql_select_inventarios);
 }
 
-//obtener el nombre de un canton en especifico por id canton
-function getCanton($id_canton)
+function getinventariosById($id_inventarios) // Cambiado el nombre de la función
 {
     global $conn;
-    $sql_select_cantones = "select nombre from cantones where id_canton=$id_canton";
-    $result = $conn->query($sql_select_cantones);
+    $sql_select_inventarios = "select nombre from almacenes where id_Aa=$id_inventarios"; // Aquí también parece haber un error en la consulta SQL
+    $result = $conn->query($sql_select_inventarios);
     $row = $result->fetch_assoc();
     return $row['nombre'];
 }
 
-//obtener el id del canton en la tabla distritos
-function getIdCantonDistrito($id_distritos)
+function getIdalmacenesinventarios($id_inventarios)
 {
     global $conn;
-    $sql_select_canton = "select canton_id from distritos where id_distritos=$id_distritos";
-    $result = $conn->query($sql_select_canton);
+    $sql_select_almacenes = "select almacenes_id from inventarios where id_inventarios=$id_inventarios";
+    $result = $conn->query($sql_select_almacenes);
     $row = $result->fetch_assoc();
-    return $row['canton_id'];
+    return $row['almacenes_id']; // Corregido el nombre de la columna
 }
 
-// obtener el listados de todos los cantones
-function getCantones()
+function getAlmacenes() // Cambiado el nombre de la función
 {
     global $conn;
-    $sql_select_cantones = "select id_canton, nombre from cantones";
-    $result = $conn->query($sql_select_cantones);
-    return  $result->fetch_all();
+    $sql_select_almacenes = "select id_almacenes, nombre from almacenes";
+    $result = $conn->query($sql_select_almacenes);
+    return $result->fetch_all();
 }
 
-
-if (isset($_POST['accion'])) {
-    
+if (isset($_POST['accion'])) 
+{
     switch ($_POST['accion']) {
-        case 'editar_distritos':
-            editDistritos();
+        case 'editar_inventarios':
+            editInventarios();
             break;
-    }
-    switch ($_POST['accion']) {
-        case 'borrar_distritos':
-            borrarDistritos();
+        case 'borrar_inventarios':
+            borrarInventarios();
             break;
-    }
-    switch ($_POST['accion']) {
-        case 'insertar_distritos':
-            insertarDistritos();
+        case 'insertar_inventarios':
+            insertarInventarios();
             break;
     }
 }
 
-
-function editDistritos()
+function editInventarios()
 {
     extract($_POST);
     try {
         global $conn;
-        $sql_edit_distritos = "update distritos set nombre='" . $nombre_editado . "', canton_id='" . $canton_editado . 
-        "' where id_distritos='". $id_distritos . "';";
-        echo $sql_edit_distritos;
-        $stmt = $conn->prepare($sql_edit_distritos);
+        $sql_edit_inventarios = "update inventarios set nombre='" . $nombre_editado . "', almacenes_id='" . $almacen_editado . 
+        "' where id_inventarios='". $id_inventarios . "';";
+        echo $sql_edit_inventarios;
+        $stmt = $conn->prepare($sql_edit_inventarios);
         $stmt->execute();
     } catch (PDOException $e) {
         echo  "<br>" . $e->getMessage();
     }
 
     $conn = null;
-    header('Location: ../SECTIONS/distritos.php');
+    header('Location: ../SECTIONS/inventarios.php');
 }
 
-function borrarDistritos()
+function borrarInventarios()
 {
     extract($_POST);
     
     try {
         global $conn;
-        $sql_edit_distritos = "delete from distritos where id_distritos=$id_distritos";
-        //echo $sql_edit_cantones;
-        $stmt = $conn->prepare($sql_edit_distritos);
+        $sql_edit_inventarios = "delete from inventarios where id_inventarios=$id_inventarios";
+        //echo $sql_edit_inventarios;
+        $stmt = $conn->prepare($sql_edit_inventarios);
         $stmt->execute();
     } catch (PDOException $e) {
         echo  "<br>" . $e->getMessage();
     }
 
     $conn = null;
-    header('Location: ../SECTIONS/distritos.php');
+    header('Location: ../SECTIONS/inventarios.php');
 }
 
-function insertarDistritos()
+function insertarInventarios()
 {
     extract($_POST);
     
     try {
         global $conn;
-        $sql_insert_distritos = "insert into distritos values (NULL,'".$nombre_insertado."','".$canton_insertado."')";
-        //echo $sql_insert_cantones;
-        $stmt = $conn->prepare($sql_insert_distritos);
+        $sql_insert_inventarios = "insert into inventarios values (NULL,'".$nombre_insertado."','".$almacenes_insertados."')";
+        //echo $sql_insert_inventarios;
+        $stmt = $conn->prepare($sql_insert_inventarios);
         $stmt->execute();
     } catch (PDOException $e) {
         echo  "<br>" . $e->getMessage();
     }
 
     $conn = null;
-    header('Location: ../SECTIONS/distritos.php');
+    header('Location: ../SECTIONS/inventarios.php');
 }
+?>

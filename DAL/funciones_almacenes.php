@@ -13,8 +13,8 @@ function Desconectar()
 function getAlmacenes()
 {
     global $conn;
-    $sql_select_almacenes = "select id_almacenes, nombre from almacenes";
-    return $result = $conn->query($sql_select_almacenes);
+    $sql_select_Almacenes = "select id_Almacenes, nombre from Almacenes";
+    return $result = $conn->query($sql_select_Almacenes);
 }
 
 
