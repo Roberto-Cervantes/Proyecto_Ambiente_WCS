@@ -9,34 +9,29 @@ function Desconectar()
     $conn->close();
 }
 
-
 function getAlmacenes()
 {
     global $conn;
-    $sql_select_Almacenes = "select id_Almacenes, nombre from Almacenes";
-    return $result = $conn->query($sql_select_Almacenes);
+    $sql_select_almacenes = "SELECT id_almacenes, nombre FROM almacenes";
+    return $result = $conn->query($sql_select_almacenes);
 }
 
-
 if (isset($_POST['accion'])) {
-    
     switch ($_POST['accion']) {
         case 'editar_almacenes':
             editAlmacenes();
             break;
-    }
-    switch ($_POST['accion']) {
         case 'borrar_almacenes':
             borrarAlmacenes();
             break;
-    }
-    switch ($_POST['accion']) {
         case 'insertar_almacenes':
             insertarAlmacenes();
             break;
+        default:
+            // Manejar acción no válida
+            break;
     }
 }
-
 
 function editAlmacenes()
 {
@@ -44,12 +39,11 @@ function editAlmacenes()
     
     try {
         global $conn;
-        $sql_edit_almacenes= "update almacenes set nombre='" . $nombre_editado . "' where id_almacenes=$id_almacenes";
-        //echo $sql_edit_almacenes;
+        $sql_edit_almacenes = "UPDATE almacenes SET nombre=? WHERE id_almacenes=?";
         $stmt = $conn->prepare($sql_edit_almacenes);
-        $stmt->execute();
+        $stmt->execute([$nombre_editado, $id_almacenes]);
     } catch (PDOException $e) {
-        echo  "<br>" . $e->getMessage();
+        echo "<br>" . $e->getMessage();
     }
 
     $conn = null;
@@ -62,12 +56,11 @@ function borrarAlmacenes()
     
     try {
         global $conn;
-        $sql_edit_almacenes = "delete from almacenes where id_almacenes=$id_almacenes";
-        //echo $sql_edit_provincias;
-        $stmt = $conn->prepare($sql_edit_almacenes);
-        $stmt->execute();
+        $sql_delete_almacenes = "DELETE FROM almacenes WHERE id_almacenes=?";
+        $stmt = $conn->prepare($sql_delete_almacenes);
+        $stmt->execute([$id_almacenes]);
     } catch (PDOException $e) {
-        echo  "<br>" . $e->getMessage();
+        echo "<br>" . $e->getMessage();
     }
 
     $conn = null;
@@ -80,14 +73,14 @@ function insertarAlmacenes()
     
     try {
         global $conn;
-        $sql_insert_almacenes = "insert into almacenes values (NULL,'".$nombre_insertado."')";
-        //echo $sql_insert_almacenes;
+        $sql_insert_almacenes = "INSERT INTO almacenes (nombre) VALUES (?)";
         $stmt = $conn->prepare($sql_insert_almacenes);
-        $stmt->execute();
+        $stmt->execute([$nombre_insertado]);
     } catch (PDOException $e) {
-        echo  "<br>" . $e->getMessage();
+        echo "<br>" . $e->getMessage();
     }
 
     $conn = null;
     header('Location: ../SECTIONS/almacenes.php');
 }
+?>
