@@ -45,8 +45,7 @@ function editProveedores()
     try {
         global $conn;
 
-        // Assign edited values from form
-        $nombre_editado = $nombre_insertado; // Assuming 'nombre_insertado' holds the edited name
+        $nombre_editado = $nombre_insertado; 
         $direccion_editado = $direccion_insertado;
         $telefono_editado = $telefono_insertado;
         $email_editado = $email_insertado;
@@ -59,7 +58,7 @@ function editProveedores()
         $stmt->bind_param('sssss', $nombre_editado, $direccion_editado, $telefono_editado, $email_editado, $id_proveedor);
         $stmt->execute();
 
-        header('Location: ../SECTIONS/proveedores.php');  // Redirect after successful update
+        header('Location: ../SECTIONS/proveedores.php');  
     } catch (PDOException $e) {
         echo "<br>" . $e->getMessage();
     }
@@ -97,16 +96,11 @@ function insertarProveedores()
         $stmt->bind_param('ssss', $_POST['nombre_insertado'], $_POST['direccion_insertado'], $_POST['telefono_insertado'], $_POST['email_insertado']);
         $stmt->execute();
 
-        $result = $stmt->get_result();
-
-        if (!$result) {
-            echo "<br>No se ha insertado el proveedor.";
-            return;
-        }
-
-        header('Location: ../SECTIONS/proveedores.php');
+        // Actualizar a la página después de 1 segundo
+        echo "<script>setTimeout(function(){ window.location.href = '../SECTIONS/proveedores.php'; }, 1000);</script>";
         exit(); 
     } catch (PDOException $e) {
         echo "<br>" . $e->getMessage();
     }
 }
+
