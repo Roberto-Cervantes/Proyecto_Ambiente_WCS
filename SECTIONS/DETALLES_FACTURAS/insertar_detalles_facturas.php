@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -42,12 +42,11 @@
                             <div class="mb-3">
                                 <label for="id_distrito" class="form-label">ID Distrito</label>
                                 <select id="id_distrito_insertado" name="id_distrito_insertado" class="form-control" required>
-                                      <!-- Here you would include the options dynamically using PHP -->
-                                      <!-- Example: -->
+                                      
                                       <option value="1">--</option> 
                                       <option value="1">District 1</option> 
                                       <option value="2">District 2</option>
-                                      <!-- Make sure to populate the options according to your data -->
+
                                 </select>
                             </div>
                         </div>
@@ -83,4 +82,4 @@
 </div>
 </div>
 
-</html>
+</html> -->
