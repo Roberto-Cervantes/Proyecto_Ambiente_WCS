@@ -31,7 +31,7 @@ CREATE TABLE `clientes` (
 CREATE TABLE `compras` (
   `id_compra` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
-  `fecha date` date NOT NULL,
+  `fechas` date NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
@@ -46,7 +46,6 @@ CREATE TABLE `detalles_facturas` (
 CREATE TABLE `detalle_compras` (
   `id_detalle` int(11) NOT NULL,
   `compra_id` int(11) NOT NULL,
-  `producto_id` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `precio_unitario` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
@@ -134,7 +133,6 @@ ALTER TABLE `detalles_facturas`
 
 ALTER TABLE `detalle_compras`
   ADD PRIMARY KEY (`id_detalle`,`compra_id`),
-  ADD KEY `producto_id` (`producto_id`),
   ADD KEY `compra_id` (`compra_id`);
 
 ALTER TABLE `distritos`

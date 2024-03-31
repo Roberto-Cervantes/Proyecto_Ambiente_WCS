@@ -25,7 +25,7 @@
 
                                 <fieldset disabled>
                                     <label for="id_cliente">Id Cliente</label>
-                                    <input type="text" id="id_cliente" class="form-control" placeholder="<?php echo $row['id_provincia'] ?>">
+                                    <input type="text" id="id_cliente" class="form-control" placeholder="<?php echo $row['id_cliente'] ?>">
                                 </fieldset>
                             </div>
 
@@ -63,7 +63,7 @@
                         </div>
                     </div>
 
-                    <input type="hidden" name="accion" value="editar_provincias">
+                    <input type="hidden" name="accion" value="editar_detalles_facturas">
                     <input type="hidden" name="id_provincia" value="<?php echo $row['id_provincia'] ?>">
                     <input type="hidden" name="nombre" value="<?php echo $row['nombre']; ?>">
                     <br>

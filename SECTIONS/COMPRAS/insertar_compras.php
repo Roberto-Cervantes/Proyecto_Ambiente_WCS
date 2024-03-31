@@ -21,7 +21,7 @@
                             <div class="col-sm-6">
                                 <div class="mb-3">
                                     <fieldset disabled>
-                                        <label for="id_proveedor">Id Proveedor</label>
+                                        <label for="id_proveedor">Id Compra</label>
                                         <input type="text" id="id_proveedor" class="form-control" placeholder="0">
                                     </fieldset>
                                 </div>

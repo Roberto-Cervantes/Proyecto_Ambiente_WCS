@@ -16,7 +16,7 @@ function getDetalles_Facturas()
     $sql_select_detalles_facturas = "SELECT f.id_factura, f.cliente_id, f.fecha, f.total, f.estado, d.id_detalle_number, d.factura_id_number
                                      FROM 
                                             facturaciones f
-                                     JOIN   detalles_facturas d ON f.id_factura = d.factura_id;"
+                                     JOIN   detalles_facturas d ON f.id_factura = d.factura_id;";
     return $result = $conn->query($sql_select_detalles_facturas);
 }
 

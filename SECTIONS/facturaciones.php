@@ -30,7 +30,7 @@ require_once "../DAL/funciones_facturaciones.php";
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Id Cliente</th>
+                        <th>Id Factura</th>
                         <th>Nombre</th>
                         <th>Action</th>
                     </tr>

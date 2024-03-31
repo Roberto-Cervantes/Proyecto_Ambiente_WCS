@@ -23,7 +23,7 @@
                             <div class="mb-3">
                                 <fieldset disabled>
                                     <label for="id_detalle_number">Id Detalle Factura</label>
-                                    <input type="text" id="id_detalle_numbere" class="form-control" placeholder="0">
+                                    <input type="text" id="id_detalle_number" class="form-control" placeholder="0">
                                 </fieldset>
                             </div>
                         </div>

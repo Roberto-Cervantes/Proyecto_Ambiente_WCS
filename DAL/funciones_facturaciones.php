@@ -15,7 +15,7 @@ function getFacturaciones()
     global $conn;
     $sql_select_facturaciones = "SELECT f.id_factura, f.cliente_id, f.fecha, f.total, f.estado, c.nombre
                             FROM  facturaciones AS f
-                            JOIN clientes AS c ON f.cliente_id = c.id_cliente;"
+                            JOIN clientes AS c ON f.cliente_id = c.id_cliente;";
     return $result = $conn->query($sql_select_facturaciones);
 }
 
