@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,12 +7,11 @@
     ?>
 </head>
 
-<div class="modal fade" id="editar<?php echo $row['id_cliente']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="insertar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
-                <h3 class="modal-title" id="exampleModalLabel">Editar Registro del cliente
-                    <?php echo $row['nombre']; ?></h3>
+                <h3 class="modal-title" id="exampleModalLabel">Insertar Registro del Cliente
             </div>
             <div class="modal-body">
 
@@ -21,31 +20,34 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-3">
-
                                 <fieldset disabled>
                                     <label for="id_cliente">Id Cliente</label>
-                                    <input type="text" id="id_cliente" class="form-control" placeholder="<?php echo $row['id_provincia'] ?>">
+                                    <input type="text" id="id_cliente" class="form-control" placeholder="0">
                                 </fieldset>
                             </div>
-
                         </div>
-
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="nombre" class="form-label">Nombre del Cliente</label>
+                                <label for="nombre" class="form-label">Nombre Cliente</label>
                                 <input type="text" id="nombre_insertado" name="nombre_insertado" class="form-control" value="" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="apellido" class="form-label">Apellido del Cliente</label>
+                                <label for="apellido" class="form-label">Apelledo del Cliente</label>
                                 <input type="text" id="apellido_insertado" name="apellido_insertado" class="form-control" value="" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="id_distrito" class="form-label">ID Distrito</label>
-                                <input type="text" id="id_distrito_insertado" name="id_distrito_insertado" class="form-control" value="" required>
+                                <select id="id_distrito_insertado" name="id_distrito_insertado" class="form-control" required>
+                                      
+                                      <option value="1">--</option> 
+                                      <option value="1">District 1</option> 
+                                      <option value="2">District 2</option>
+
+                                </select>
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -62,13 +64,12 @@
                         </div>
                     </div>
 
-                    <input type="hidden" name="accion" value="editar_provincias">
-                    <input type="hidden" name="id_provincia" value="<?php echo $row['id_provincia'] ?>">
-                    <input type="hidden" name="nombre" value="<?php echo $row['nombre']; ?>">
+                    <input type="hidden" name="accion" value="insertar_clientes">
+                    <input type="hidden" name="id_cliente" value=0>
                     <br>
 
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Editar</button>
+                        <button type="submit" class="btn btn-primary">insertar</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     </div>
 
@@ -81,4 +82,4 @@
 </div>
 </div>
 
-</html>
+</html> -->

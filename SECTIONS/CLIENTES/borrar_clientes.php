@@ -22,7 +22,11 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
+<<<<<<< HEAD
+                                    <label for="id_cliente">Id Provincia</label>
+=======
                                     <label for="id_cliente">Id Cliente</label>
+>>>>>>> b8d5d0e01c42a3b9dfd8de91645302b75904b3a7
                                     <input type="text" id="id_cliente" class="form-control" placeholder="<?php echo $row['id_cliente'] ?>">
                                 </fieldset>
                             </div>

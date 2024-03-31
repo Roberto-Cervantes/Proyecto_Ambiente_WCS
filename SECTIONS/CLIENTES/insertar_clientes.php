@@ -34,19 +34,26 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="apellido" class="form-label">Apellido del Cliente</label>
+                                <label for="apellido" class="form-label">Apelledo del Cliente</label>
                                 <input type="text" id="apellido_insertado" name="apellido_insertado" class="form-control" value="" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="id_distrito" class="form-label">ID Distrito</label>
-                                <input type="text" id="id_distrito_insertado" name="id_distrito_insertado" class="form-control" value="" required>
+                                <select id="id_distrito_insertado" name="id_distrito_insertado" class="form-control" required>
+                                      <!-- Here you would include the options dynamically using PHP -->
+                                      <!-- Example: -->
+                                      <option value="1">--</option> 
+                                      <option value="1">District 1</option> 
+                                      <option value="2">District 2</option>
+                                      <!-- Make sure to populate the options according to your data -->
+                                </select>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="telefono" class="form-label">Telefono del Cliente</label>
+                                <label for="telefono" class="form-label">Telefono del Cleinte</label>
                                 <input type="text" id="telefono_insertado" name="telefono_insertado" class="form-control" value="" required>
                             </div>
                         </div>
