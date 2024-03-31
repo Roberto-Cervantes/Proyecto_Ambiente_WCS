@@ -35,7 +35,7 @@
                                 <label for="nombre" class="form-label">Canton</label> 
                                 <select class="form-control form-select form-select-lg mb-3" name="canton_editado" aria-label="Large select example">
                                     <?php
-                                    $result = getCantones();
+                                    $result = getInventarios();
                                     $id_prov = getIdCantonDistrito($row['id_distritos']);
                                     if (count($result[0]) > 0) {
                                         foreach ($result as $rw) {

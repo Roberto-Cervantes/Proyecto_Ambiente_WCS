@@ -10,7 +10,7 @@ function Desconectar()
 }
 
 
-function getCantones()
+function getInventarios()
 {
     global $conn;
     $sql_select_cantones = "select id_canton, nombre, id_provincia from cantones";

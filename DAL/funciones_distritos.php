@@ -39,7 +39,7 @@ function getIdCantonDistrito($id_distrito)
 }
 
 // obtener el listados de todos los cantones
-function getCantones()
+function getInventarios()
 {
     global $conn;
     $sql_select_cantones = "select id_canton, nombre from cantones";
