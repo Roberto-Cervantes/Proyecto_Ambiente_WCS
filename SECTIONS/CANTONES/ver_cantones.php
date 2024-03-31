@@ -42,7 +42,7 @@
                                 <fieldset disabled>
                                     <label for="nombre" class="form-label">Provincia</label>
                                     <input type="text" id="provincia_insertada" name="provincia_insertada" class="form-control" 
-                                    value="<?php echo getProvincia($row['provincia_id']); ?>" required>
+                                    value="<?php echo getProvincia($row['id_provincia']); ?>" required>
                                 </fieldset>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                     <input type="hidden" name="accion" value="ver_cantones">
                     <input type="hidden" name="id_canton" value="<?php echo $row['id_canton'] ?>">
                     <input type="hidden" name="nombre" value="<?php echo $row['nombre']; ?>">
-                    <input type="hidden" name="provincia" value="<?php echo $row['provincia_id']; ?>">
+                    <input type="hidden" name="provincia" value="<?php echo $row['id_provincia']; ?>">
                     <br>
 
                     <div class="modal-footer">

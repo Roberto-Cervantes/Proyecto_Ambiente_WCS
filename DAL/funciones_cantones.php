@@ -13,7 +13,7 @@ function Desconectar()
 function getCantones()
 {
     global $conn;
-    $sql_select_cantones = "select id_canton, nombre, provincia_id from cantones";
+    $sql_select_cantones = "select id_canton, nombre, id_provincia from cantones";
     return $result = $conn->query($sql_select_cantones);
 }
 
@@ -29,10 +29,10 @@ function getProvincia($id_provincia)
 function getIdProvinciaCanton($id_canton)
 {
     global $conn;
-    $sql_select_provincias = "select provincia_id from cantones where id_canton=$id_canton";
+    $sql_select_provincias = "select id_provincia from cantones where id_canton=$id_canton";
     $result = $conn->query($sql_select_provincias);
     $row = $result->fetch_assoc();
-    return $row['provincia_id'];
+    return $row['id_provincia'];
 }
 
 function getProvincias()
@@ -68,7 +68,7 @@ function editCantones()
     extract($_POST);
     try {
         global $conn;
-        $sql_edit_cantones = "update cantones set nombre='" . $nombre_editado . "', provincia_id='" . $provincia_editada . 
+        $sql_edit_cantones = "update cantones set nombre='" . $nombre_editado . "', id_provincia='" . $provincia_editada . 
         "' where id_canton='". $id_canton . "';";
         echo $sql_edit_cantones;
         $stmt = $conn->prepare($sql_edit_cantones);

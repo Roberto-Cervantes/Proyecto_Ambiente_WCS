@@ -43,20 +43,20 @@ require_once "../DAL/funciones_distritos.php";
                     if ($result->num_rows > 0) {
                         foreach ($result as $row) {
                             echo '<tr>';
-                            echo '<td>' . $row['id_distritos'] . '</td>';
+                            echo '<td>' . $row['id_distrito'] . '</td>';
                             echo '<td>' . $row['nombre'] . '</td>';
                             echo '<td>' . getCanton($row['canton_id']) . '</td>';
                             echo '<td width=250>';
                             echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
-                            data-target="#ver' . $row['id_distritos'] . ' ">
+                            data-target="#ver' . $row['id_distrito'] . ' ">
                             <i class="fa fa-edit ">Ver</i></button>';
                             echo ' ';
                             echo '<button type="button" class="btn btn-success" data-toggle="modal" 
-                            data-target="#editar' . $row['id_distritos'] . ' ">
+                            data-target="#editar' . $row['id_distrito'] . ' ">
                             <i class="fa fa-edit ">Actualizar</i></button>';
                             echo ' ';
                             echo '<button type="button" class="btn btn-danger" data-toggle="modal" 
-                            data-target="#borrar' . $row['id_distritos'] . ' ">
+                            data-target="#borrar' . $row['id_distrito'] . ' ">
                             <i class="fa fa-edit ">Borrar</i></button>';
                             echo ' ';
                             echo '</td>';

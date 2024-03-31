@@ -110,4 +110,4 @@ function insertarInventarios()
     $conn = null;
     header('Location: ../SECTIONS/inventarios.php');
 }
-?>
+

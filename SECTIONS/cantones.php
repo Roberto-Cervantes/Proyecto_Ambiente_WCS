@@ -45,7 +45,7 @@ require_once "../DAL/funciones_cantones.php";
                             echo '<tr>';
                             echo '<td>' . $row['id_canton'] . '</td>';
                             echo '<td>' . $row['nombre'] . '</td>';
-                            echo '<td>' . getProvincia($row['provincia_id']) . '</td>';
+                            echo '<td>' . getProvincia($row['id_provincia']) . '</td>';
                             echo '<td width=250>';
                             echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
                             data-target="#ver' . $row['id_canton'] . ' ">

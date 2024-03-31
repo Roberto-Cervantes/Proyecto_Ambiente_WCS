@@ -14,7 +14,7 @@ function Desconectar()
 function getDistritos()
 {
     global $conn;
-    $sql_select_distritos = "select id_distritos, nombre, canton_id from distritos";
+    $sql_select_distritos = "select id_distrito, nombre, canton_id from distritos";
     return $result = $conn->query($sql_select_distritos);
 }
 
@@ -29,10 +29,10 @@ function getCanton($id_canton)
 }
 
 //obtener el id del canton en la tabla distritos
-function getIdCantonDistrito($id_distritos)
+function getIdCantonDistrito($id_distrito)
 {
     global $conn;
-    $sql_select_canton = "select canton_id from distritos where id_distritos=$id_distritos";
+    $sql_select_canton = "select canton_id from distritos where id_distrito=$id_distrito";
     $result = $conn->query($sql_select_canton);
     $row = $result->fetch_assoc();
     return $row['canton_id'];
@@ -74,7 +74,7 @@ function editDistritos()
     try {
         global $conn;
         $sql_edit_distritos = "update distritos set nombre='" . $nombre_editado . "', canton_id='" . $canton_editado . 
-        "' where id_distritos='". $id_distritos . "';";
+        "' where id_distrito='". $id_distrito . "';";
         echo $sql_edit_distritos;
         $stmt = $conn->prepare($sql_edit_distritos);
         $stmt->execute();
@@ -92,7 +92,7 @@ function borrarDistritos()
     
     try {
         global $conn;
-        $sql_edit_distritos = "delete from distritos where id_distritos=$id_distritos";
+        $sql_edit_distritos = "delete from distritos where id_distrito=$id_distrito";
         //echo $sql_edit_cantones;
         $stmt = $conn->prepare($sql_edit_distritos);
         $stmt->execute();

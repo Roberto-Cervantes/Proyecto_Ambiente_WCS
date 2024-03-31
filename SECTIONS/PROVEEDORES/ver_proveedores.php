@@ -19,7 +19,7 @@
                 <form action="../DAL/funciones_proveedores.php" method="POST">
 
                     <div class="row">
-                    <div class="col-sm-6">
+                        <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
                                     <label for="id_proveedor">Id Proveedor</label>
