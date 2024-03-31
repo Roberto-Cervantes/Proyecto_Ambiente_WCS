@@ -48,7 +48,6 @@ function editClientes()
         global $conn;
         $sql_edit_clientes = "UPDATE clientes set nombre='" . $nombre_editado . "',
                                                   apellido='" . $apellido_editado . "',
-                                                  id_distrito='" . $id_distrito_editado . "',
                                                   telefono='" . $telefono_editado . "',
                                                   email='" . $email_editado . "'
                                                   where id_cliente=$id_cliente";
@@ -87,12 +86,11 @@ function insertarClientes()
     
     try {
         global $conn;
-        $sql_insert_clientes = "INSERT INTO clientes VALUES (NULL, :nombre, :apellido, :id_distrito, :telefono, :email)";
+        $sql_insert_clientes = "INSERT INTO clientes VALUES (NULL, :nombre, :apellido, NULL, :telefono, :email)";
         
         $stmt = $conn->prepare($sql_insert_clientes);
         $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':apellido', $apellido);
-        $stmt->bindParam(':id_distrito', $id_distrito);
         $stmt->bindParam(':telefono', $telefono);
         $stmt->bindParam(':email', $email);
         

@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,61 +11,53 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
-                <h3 class="modal-title" id="exampleModalLabel">Insertar Registro del Cliente
+                <h3 class="modal-title" id="exampleModalLabel">Insertar Detalle Factura
             </div>
             <div class="modal-body">
 
-                <form action="../DAL/funciones_clientes.php" method="POST">
+                <form action="../DAL/funciones_detalles_facturas.php" method="POST">
 
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                    <label for="id_cliente">Id Cliente</label>
-                                    <input type="text" id="id_cliente" class="form-control" placeholder="0">
+                                    <label for="id_detalle_number">ID Detalle</label>
+                                    <input type="text" id="id_detalle_number" class="form-control" placeholder="0">
                                 </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="nombre" class="form-label">Nombre Cliente</label>
-                                <input type="text" id="nombre_insertado" name="nombre_insertado" class="form-control" value="" required>
+                                <fieldset disabled>
+                                    <label for="factura_id_number">ID Factura</label>
+                                    <input type="text" id="factura_id_number" class="form-control" placeholder="0">
+                                </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="apellido" class="form-label">Apellido del Cliente</label>
-                                <input type="text" id="apellido_insertado" name="apellido_insertado" class="form-control" value="" required>
+                                <fieldset disabled>
+                                    <label for="producto_id">ID Producto</label>
+                                    <input type="text" id="producto_id" class="form-control" placeholder="0">
+                                </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="id_distrito" class="form-label">ID Distrito</label>
-                                <select id="id_distrito_insertado" name="id_distrito_insertado" class="form-control" required>
-                                      
-                                      <option value="1">--</option> 
-                                      <option value="1">District 1</option> 
-                                      <option value="2">District 2</option>
-
-                                </select>
+                                <label for="cantidad" class="form-label">Cantidad</label>
+                                <input type="text" id="cantidad_insertado" name="cantidad_insertado" class="form-control" value="" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="telefono" class="form-label">Telefono del Cleinte</label>
-                                <input type="text" id="telefono_insertado" name="telefono_insertado" class="form-control" value="" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email del Cliente</label>
-                                <input type="email" id="email_insertado" name="email_insertado" class="form-control" value="" required>
+                                <label for="precio_unitario" class="form-label">Precio</label>
+                                <input type="text" id="precio_unitario_insertado" name="precio_unitario_insertado" class="form-control" value="" required>
                             </div>
                         </div>
                     </div>
 
-                    <input type="hidden" name="accion" value="insertar_clientes">
-                    <input type="hidden" name="id_cliente" value=0>
+                    <input type="hidden" name="accion" value="insertar_detalles_facturas">
+                    <input type="hidden" name="id_detalle_number" value=0>
                     <br>
 
                     <div class="modal-footer">
@@ -82,4 +74,4 @@
 </div>
 </div>
 
-</html> -->
+</html> 

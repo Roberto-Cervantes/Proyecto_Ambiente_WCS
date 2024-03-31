@@ -12,7 +12,7 @@
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
                 <h3 class="modal-title" id="exampleModalLabel">Ver Detalle de la Factura del Cliente
-                    <?php echo $row['nombre']; ?></h3>
+                    <?php echo $row['factura_id_number']; ?></h3>
             </div>
             <div class="modal-body">
 

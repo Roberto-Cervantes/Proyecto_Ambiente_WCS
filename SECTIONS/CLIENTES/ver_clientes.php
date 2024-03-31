@@ -40,7 +40,7 @@
                             <div class="mb-3">
                                 <fieldset disabled>
                                 <label for="apellido" class="form-label">Apellido del Cliente</label>
-                                <input type="text" id="apellido_editado" name="apellido_editado" class="form-control" value="<?php echo $row['nombre']; ?>" required>
+                                <input type="text" id="apellido_editado" name="apellido_editado" class="form-control" value="<?php echo $row['apellido']; ?>" required>
                                 </fieldset>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                             <div class="mb-3">
                                 <fieldset disabled>
                                 <label for="id_distrito" class="form-label">ID Distrito del Cliente</label>
-                                <input type="text" id="id_distrito_editado" name="id_distrito_editado" class="form-control" value="<?php echo $row['nombre']; ?>" required>
+                                <input type="text" id="id_distrito_editado" name="id_distrito_editado" class="form-control" value="<?php echo $row['id_distrito']; ?>" required>
                                 </fieldset>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                             <div class="mb-3">
                                 <fieldset disabled>
                                 <label for="telefono" class="form-label">Telefono del Cliente</label>
-                                <input type="text" id="telefono_editado" name="telefono_editado" class="form-control" value="<?php echo $row['nombre']; ?>" required>
+                                <input type="text" id="telefono_editado" name="telefono_editado" class="form-control" value="<?php echo $row['telefono']; ?>" required>
                                 </fieldset>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                             <div class="mb-3">
                                 <fieldset disabled>
                                 <label for="email" class="form-label">Email del Cliente</label>
-                                <input type="text" id="email_editado" name="email_editado" class="form-control" value="<?php echo $row['nombre']; ?>" required>
+                                <input type="text" id="email_editado" name="email_editado" class="form-control" value="<?php echo $row['email']; ?>" required>
                                 </fieldset>
                             </div>
                         </div>

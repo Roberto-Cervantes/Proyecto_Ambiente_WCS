@@ -13,10 +13,15 @@ function Desconectar()
 function getDetalles_Facturas()
 {
     global $conn;
-    $sql_select_detalles_facturas = "SELECT f.id_factura, f.cliente_id, f.fecha, f.total, f.estado, d.id_detalle_number, d.factura_id_number
-                                     FROM 
-                                            facturaciones f
-                                     JOIN   detalles_facturas d ON f.id_factura = d.factura_id;";
+    $sql_select_detalles_facturas = "SELECT f.id_factura, f.Estado,
+                                             df.id_detalle, df.factura_id, df.producto_id, df.cantidad, df.precio_unitario,
+                                             p.id_producto, p.nombre
+                                    FROM
+                                        facturas AS f
+                                    INNER JOIN
+                                        detalles_facturas AS df ON f.id_factura = df.factura_id
+                                    INNER JOIN
+                                        producto AS p ON df.producto_id = p.id_producto;";
     return $result = $conn->query($sql_select_detalles_facturas);
 }
 
@@ -41,28 +46,25 @@ if (isset($_POST['accion'])) {
 }
 
 
-/* function editFacturaciones()
+ function editDetalles_Facturas()
 {
     extract($_POST);
     
     try {
         global $conn;
-        $sql_edit_clientes = "UPDATE clientes set nombre='" . $nombre_editado . "',
-                                                  apellido='" . $apellido_editado . "',
-                                                  id_distrito='" . $id_distrito_editado . "',
-                                                  telefono='" . $telefono_editado . "',
-                                                  email='" . $email_editado . "'
-                                                  where id_cliente=$id_cliente";
+        $sql_edit_detalles_facturas = "UPDATE detalles_facturas  set cantidad='" . $cantidad_editado . "',
+                                                                     precio_unitario='" . $precio_unitario_editado . "'
+                                                                     where id_detalle_number=$id_detalle_number";
         //echo $sql_edit_clientes;
-        $stmt = $conn->prepare($sql_edit_clientes);
+        $stmt = $conn->prepare($sql_edit_detalles_facturas);
         $stmt->execute();
     } catch (PDOException $e) {
         echo  "<br>" . $e->getMessage();
     }
 
     $conn = null;
-    header('Location: ../SECTIONS/clientes.php');
-} */
+    header('Location: ../SECTIONS/detalles_facturas.php');
+} 
 
 function borrarDetalles_Facturas()
 {
@@ -82,27 +84,24 @@ function borrarDetalles_Facturas()
     header('Location: ../SECTIONS/detalles_facturas.php');
 }
 
-/* function insertarFacturaciones()
+ function insertarFacturaciones()
 {
     extract($_POST);
     
     try {
         global $conn;
-        $sql_insert_clientes = "INSERT INTO clientes VALUES (NULL, :nombre, :apellido, :id_distrito, :telefono, :email)";
+        $sql_insert_detalles_facturas = "INSERT INTO detalles_facturas VALUES (NULL, NULL, NULL, :cantidad, :precio_unitario)";
         
-        $stmt = $conn->prepare($sql_insert_clientes);
-        $stmt->bindParam(':nombre', $nombre);
-        $stmt->bindParam(':apellido', $apellido);
-        $stmt->bindParam(':id_distrito', $id_distrito);
-        $stmt->bindParam(':telefono', $telefono);
-        $stmt->bindParam(':email', $email);
+        $stmt = $conn->prepare($sql_insert_detalles_facturas);
+        $stmt->bindParam(':cantidad', $cantidad);
+        $stmt->bindParam(':precio_unitario', $precio_unitario);
         
-        $stmt = $conn->prepare($sql_insert_clientes);
+        $stmt = $conn->prepare($sql_insert_detalles_facturas);
         $stmt->execute();
     } catch (PDOException $e) {
         echo  "<br>" . $e->getMessage();
     }
 
     $conn = null;
-    header('Location: ../SECTIONS/clientes.php');
-} */
+    header('Location: ../SECTIONS/detalles_facturas.php');
+}

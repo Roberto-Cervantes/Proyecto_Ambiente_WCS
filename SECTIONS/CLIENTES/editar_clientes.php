@@ -21,13 +21,11 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-3">
-
                                 <fieldset disabled>
                                     <label for="id_cliente">Id Cliente</label>
-                                    <input type="text" id="id_cliente" class="form-control" placeholder="<?php echo $row['id_provincia'] ?>">
+                                    <input type="text" id="id_cliente" class="form-control" placeholder="<?php echo $row['id_cliente'] ?>">
                                 </fieldset>
                             </div>
-
                         </div>
 
                         <div class="col-sm-6">
@@ -44,8 +42,10 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="id_distrito" class="form-label">ID Distrito</label>
-                                <input type="text" id="id_distrito_insertado" name="id_distrito_insertado" class="form-control" value="" required>
+                                <fieldset disabled>
+                                    <label for="id_distrito" class="form-label">ID Distrito</label>
+                                    <input type="text" id="id_distrito_insertado" name="id_distrito_insertado" class="form-control" placeholder="<?php echo $row['id_distrito'] ?>">
+                                </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
