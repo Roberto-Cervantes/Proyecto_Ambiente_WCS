@@ -36,8 +36,8 @@ CREATE TABLE `compras` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 CREATE TABLE `detalles_facturas` (
-  `id_detalle number` int(11) NOT NULL,
-  `factura_id number` int(11) NOT NULL,
+  `id_detalle_number` int(11) NOT NULL,
+  `factura_id_number` int(11) NOT NULL,
   `producto_id` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `precio_unitario` decimal(10,0) NOT NULL

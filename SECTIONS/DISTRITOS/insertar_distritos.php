@@ -37,7 +37,7 @@
                                 <label for="nombre" class="form-label">Cantones</label>
                                 <select class="form-control form-select form-select-lg mb-3" name="canton_insertado" aria-label="Large select example">
                                     <?php
-                                    $result = getCantones();
+                                    $result = getInventarios();
                                     if (count($result[0]) > 0) {
                                         foreach ($result as $rw) {
                                             echo '<option value="' . $rw[0] . '">' . $rw[1] . '</option>';

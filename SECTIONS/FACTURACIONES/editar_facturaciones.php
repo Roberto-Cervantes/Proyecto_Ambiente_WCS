@@ -1,4 +1,4 @@
-<!-- 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,60 +12,55 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
-                <h3 class="modal-title" id="exampleModalLabel">Editar Registro del cliente
-                    <?php echo $row['nombre']; ?></h3>
+                <h3 class="modal-title" id="exampleModalLabel">Editar Factura del cliente
+                    <?php echo $row['cliente_id']; ?></h3>
             </div>
             <div class="modal-body">
 
-                <form action="../DAL/funciones_clientes.php" method="POST">
+                <form action="../DAL/funciones_facturaciones.php" method="POST">
 
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-3">
-
                                 <fieldset disabled>
-                                    <label for="id_cliente">Id Cliente</label>
-                                    <input type="text" id="id_cliente" class="form-control" placeholder="<?php echo $row['id_provincia'] ?>">
+                                    <label for="id_factura">Id factura</label>
+                                    <input type="text" id="id_factura" class="form-control" placeholder="<?php echo $row['id_factura'] ?>">
                                 </fieldset>
                             </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <fieldset disabled>
+                                    <label for="cliente_id">Id Cliente</label>
+                                    <input type="text" id="cliente_id" class="form-control" placeholder="<?php echo $row['cliente_id'] ?>">
+                                </fieldset>
+                            </div>
+                        </div>
 
-                        </div>
-
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="nombre" class="form-label">Nombre del Cliente</label>
-                                <input type="text" id="nombre_insertado" name="nombre_insertado" class="form-control" value="" required>
+                                <label for="fecha" class="form-label">Fecha Factura</label>
+                                <input type="datetime" id="fecha_insertado" name="fecha_insertado" class="form-control" value="" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="apellido" class="form-label">Apellido del Cliente</label>
-                                <input type="text" id="apellido_insertado" name="apellido_insertado" class="form-control" value="" required>
+                                <label for="total" class="form-label">Total de la Factura</label>
+                                <input type="text" id="total_insertado" name="total_insertado" class="form-control" value="" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="id_distrito" class="form-label">ID Distrito</label>
-                                <input type="text" id="id_distrito_insertado" name="id_distrito_insertado" class="form-control" value="" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="mb-3">
-                                <label for="telefono" class="form-label">Telefono del Cleinte</label>
-                                <input type="text" id="telefono_insertado" name="telefono_insertado" class="form-control" value="" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email del Cliente</label>
-                                <input type="email" id="email_insertado" name="email_insertado" class="form-control" value="" required>
+                                <label for="Estado" class="form-label">Estado Factura</label>
+                                <input type="checkbox" id="Estado_insertado" name="Estado_insertado" class="form-control" value="0" required>
+                                <input type="checkbox" id="Estado_insertado" name="Estado_insertado" class="form-control" value="1" required>
                             </div>
                         </div>
                     </div>
 
-                    <input type="hidden" name="accion" value="editar_provincias">
-                    <input type="hidden" name="id_provincia" value="<?php echo $row['id_provincia'] ?>">
-                    <input type="hidden" name="nombre" value="<?php echo $row['nombre']; ?>">
+                    <input type="hidden" name="accion" value="editar_facturaciones">
+                    <input type="hidden" name="id_factura" value="<?php echo $row['id_factura'] ?>">
+                    <input type="hidden" name="cliente_id" value="<?php echo $row['cliente_id']; ?>">
                     <br>
 
                     <div class="modal-footer">
@@ -83,4 +78,4 @@
 </div>
 
 </html>
- -->
+

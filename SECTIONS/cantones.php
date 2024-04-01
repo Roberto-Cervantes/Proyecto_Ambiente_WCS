@@ -39,7 +39,7 @@ require_once "../DAL/funciones_cantones.php";
                 <tbody>
 
                     <?php
-                    $result = getCantones();
+                    $result = getInventarios();
                     if ($result->num_rows > 0) {
                         foreach ($result as $row) {
                             echo '<tr>';
