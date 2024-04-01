@@ -51,8 +51,7 @@
                             <div class="col-sm-6">
                                 <div class="mb-3">
                                     <label for="precio_unitario_insertado" class="form-label">Precio Unitario</label>
-                                    <input type="number" id="precio_unitario_insertado" name="precio_unitario_insertado"
-                                        class="form-control" required>
+                                    <input type="number" id="precio_unitario_insertado" name="precio_unitario_insertado" class="form-control" required>
                                 </div>
                             </div>
                         </div>

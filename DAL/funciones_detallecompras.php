@@ -22,10 +22,10 @@ function getDetalleCompras()
         }
         return $compras;
     } else {
-        echo "No se encontraron compras.";
         return false;
     }
 }
+
 
 function getCompras()
 {
@@ -123,14 +123,14 @@ function editarDetalleCompra()
         // Realizar la actualización en la base de datos
         $sql_edit_detallecompras = "UPDATE detalle_compras SET compra_id = ?, cantidad = ?, precio_unitario = ? WHERE id_detalle = ?";
         $stmt = $conn->prepare($sql_edit_detallecompras);
-        $stmt->bind_param('ssss', $id_compra_editado, $cantidad_editada, $precio_unitario_editado, $id_detalle, $compra_id); // Cambiar id_compra por compra_id
+        $stmt->bind_param('ssss', $id_compra_editado, $cantidad_editada, $precio_unitario_editado, $id_detalle); 
         $stmt->execute();
     } catch (PDOException $e) {
         echo "<br>" . $e->getMessage();
     }
 
     $conn = null;
-    header('Location: ../SECTIONS/detallecompras.php');
+    header('Location: ../SECTIONS/detalle_compras.php');
 }
 
 function borrarDetalleCompra()
@@ -155,7 +155,7 @@ function borrarDetalleCompra()
        
         $conn->close();
         // Redirigir al usuario después de la eliminación
-        header('Location: ../SECTIONS/detallecompras.php');
+        header('Location: ../SECTIONS/detalle_compras.php');
         exit(); 
     } catch (Exception $e) {
         echo "Error: " . $e->getMessage();
@@ -171,10 +171,16 @@ function insertarDetalleCompra()
 
     try {
         global $conn;
-        $sql_insert_detallecompras = "INSERT INTO detalle_compras (compra_id, cantidad, precio_unitario) VALUES (?, ?, ?)";
-        $stmt = $conn->prepare($sql_insert_detallecompras);
-        $stmt->bind_param('iss', $_POST['compra_id'], $_POST['cantidad_insertada'], $_POST['precio_unitario_insertado']); 
-        $stmt->execute(); 
+        $compra_id = $_POST['compra_id'];
+        $cantidad = $_POST['cantidad_insertada'];
+        $precio_unitario = $_POST['precio_unitario_insertado'];
+
+        // Insertar un solo registro en detalle_compras
+        $sql_insert_detallecompra = "INSERT INTO detalle_compras (compra_id, cantidad, precio_unitario) VALUES (?, ?, ?)";
+        $stmt = $conn->prepare($sql_insert_detallecompra);
+        $stmt->bind_param('iii', $compra_id, $cantidad, $precio_unitario);
+        $stmt->execute();
+
     } catch (PDOException $e) {
         echo "<br>" . $e->getMessage();
     }
@@ -182,4 +188,3 @@ function insertarDetalleCompra()
     $conn = null;
     header('Location: ../SECTIONS/detalle_compras.php');
 }
-

@@ -42,7 +42,7 @@ require_once "../DAL/funciones_detallecompras.php";
 
                     <?php
                     $result = getDetalleCompras();
-                    foreach ($result as $row) {
+                    if ($result !== false) {
                         foreach ($result as $row) {
                             echo '<tr>';
                             echo '<td>' . $row['id_detalle'] . '</td>';
@@ -52,21 +52,29 @@ require_once "../DAL/funciones_detallecompras.php";
                             echo '<td>' . calcularTotal($row['cantidad'], $row['precio_unitario']) . '</td>';
                             echo '<td width=250>';
                             echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
-                            data-target="#ver' . $row['id_detalle'] . ' ">
-                            <i class="fa fa-edit ">Ver</i></button>';
+                        data-target="#ver' . $row['id_detalle'] . ' ">
+                        <i class="fa fa-edit ">Ver</i></button>';
                             echo ' ';
                             echo '<button type="button" class="btn btn-success" data-toggle="modal" 
-                            data-target="#editar' . $row['id_detalle'] . ' ">
-                            <i class="fa fa-edit ">Actualizar</i></button>';
+                        data-target="#editar' . $row['id_detalle'] . ' ">
+                        <i class="fa fa-edit ">Actualizar</i></button>';
                             echo ' ';
                             echo '<button type="button" class="btn btn-danger" data-toggle="modal" 
-                            data-target="#borrar' . $row['id_detalle'] . ' ">
-                            <i class="fa fa-edit ">Borrar</i></button>';
+                        data-target="#borrar' . $row['id_detalle'] . ' ">
+                        <i class="fa fa-edit ">Borrar</i></button>';
                             echo ' ';
                             echo '</td>';
+                            require "DETALLES_COMPRAS/editar_detallecompras.php";
+                            require "DETALLES_COMPRAS/ver_detallecompras.php";
+                            require "DETALLES_COMPRAS/borrar_detallecompras.php";
+
                             echo '</tr>';
                         }
+                    } else {
+                        echo "No se encontraron detalles de compras";
                     }
+
+
                     ?>
                 </tbody>
             </table>
