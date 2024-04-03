@@ -19,22 +19,21 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <fieldset disabled>
-                                    <label for="id_compra">Id Compra</label>
-                                    <input type="text" id="id_compra" class="form-control"
-                                        placeholder="<?php echo $row['id_compra'] ?>">
-                                </fieldset>
+                                <label for="id_compra" class="form-label">Id Compra</label>
+                                <input type="text" id="id_compra" class="form-control"
+                                    value="<?php echo $row['id_compra']; ?>" disabled>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="mb-3">
                                 <label for="producto_insertado" class="form-label">Producto</label>
                                 <select class="form-control" id="producto_insertado" name="producto_insertado" required>
-                                    <option value="" selected disabled>Selecciona un producto</option>
+                                    <option value="" disabled>Selecciona un producto</option>
                                     <?php
                                     $productos = getProductos(); // Obtener todos los productos
                                     foreach ($productos as $producto) {
-                                        echo '<option value="' . $producto['id_producto'] . '">' . $producto['nombre'] . '</option>';
+                                        $selected = ($producto['id_producto'] == $row['id_producto']) ? 'selected' : '';
+                                        echo '<option value="' . $producto['id_producto'] . '" ' . $selected . '>' . $producto['nombre'] . '</option>';
                                     }
                                     ?>
                                 </select>
@@ -44,16 +43,16 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="fechas_insertado" class="form-label">Fecha</label>
-                                <input type="date" id="fechas_insertado" name="fechas_insertado" class="form-control"
-                                    required>
+                                <input type="date" id="fechas_insertado" name="fechas_insertado" class="form-control" 
+                                    value="<?php echo $row['fechas']; ?>" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="estado_insertado" class="form-label">Estado</label>
                                 <select class="form-control" id="estado_insertado" name="estado_insertado" required>
-                                    <option value="1">Activo</option>
-                                    <option value="0">Inactivo</option>
+                                    <option value="1" <?php if ($row['estado'] == 1) echo 'selected'; ?>>Activo</option>
+                                    <option value="0" <?php if ($row['estado'] == 0) echo 'selected'; ?>>Inactivo</option>
                                 </select>
                             </div>
                         </div>
@@ -70,5 +69,3 @@
         </div>
     </div>
 </div>
-
-</html>

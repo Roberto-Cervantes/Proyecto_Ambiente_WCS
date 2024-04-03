@@ -33,25 +33,25 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre del Proveedor</label>
-                                <input type="text" id="nombre_insertado" name="nombre_insertado" class="form-control" value="" required>
+                                <input type="text" id="nombre_insertado" name="nombre_insertado" class="form-control" value="<?php echo $row['nombre']; ?>" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="direccion class="form-label">Direccion del Proveedor</label>
-                                <input type="text" id="direccion_insertado" name="direccion_insertado" class="form-control" value="" required>
+                                <input type="text" id="direccion_insertado" name="direccion_insertado" class="form-control" value="<?php echo $row['direccion']; ?>" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="telefono" class="form-label">Telefono del Proveedor</label>
-                                <input type="text" id="telefono_insertado" name="telefono_insertado" class="form-control" value="" required>
+                                <input type="text" id="telefono_insertado" name="telefono_insertado" class="form-control" value="<?php echo $row['telefono']; ?>" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email del Proveedor</label>
-                                <input type="email" id="email_insertado" name="email_insertado" class="form-control" value="" required>
+                                <input type="email" id="email_insertado" name="email_insertado" class="form-control" value="<?php echo $row['email']; ?>" required>
                             </div>
                         </div>
                     </div>
