@@ -7,11 +7,11 @@
     ?>
 </head>
 
-<div class="modal fade" id="borrar<?php echo $row['id_productos']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="borrar<?php echo $row['id_producto']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
-                <h3 class="modal-title" id="exampleModalLabel">Borrar Registro
+                <h3 class="modal-title" id="exampleModalLabel">Borrar Registro del Producto
                     <?php echo $row['nombre']; ?></h3>
             </div>
             <div class="modal-body">
@@ -22,9 +22,8 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                    <label for="id_productos">Id producto</label>
-                                    <input type="text" id="id_productos" class="form-control" 
-                                    placeholder="<?php echo $row['id_productos'] ?>">
+                                    <label for="id_producto">Id producto</label>
+                                    <input type="text" id="id_producto" class="form-control"  placeholder="<?php echo $row['id_productos'] ?>">
                                 </fieldset>
                             </div>
                         </div>
@@ -36,21 +35,11 @@
                                 </fieldset>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="mb-3">
-                                <fieldset disabled>
-                                    <label for="nombre" class="form-label">Canton</label>
-                                    <input type="text" id="inventario_insertado" name="inventario_insertado" class="form-control" 
-                                    value="<?php echo getInventarios($row['inventarios_id']); ?>" required>
-                                </fieldset>
-                            </div>
-                        </div>
                     </div>
 
                     <input type="hidden" name="accion" value="borrar_productos">
-                    <input type="hidden" name="id_productos" value="<?php echo $row['id_productos'] ?>">
+                    <input type="hidden" name="id_producto" value="<?php echo $row['id_producto'] ?>">
                     <input type="hidden" name="nombre" value="<?php echo $row['nombre']; ?>">
-                    <input type="hidden" name="inventario" value="<?php echo $row['inventarios_id']; ?>">
                     <br>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Borrar</button>

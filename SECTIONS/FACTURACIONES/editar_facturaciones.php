@@ -52,8 +52,7 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="Estado" class="form-label">Estado Factura</label>
-                                <input type="checkbox" id="Estado_insertado" name="Estado_insertado" class="form-control" value="0" required>
-                                <input type="checkbox" id="Estado_insertado" name="Estado_insertado" class="form-control" value="1" required>
+                                <input type="text" id="Estado_insertado" name="Estado_insertado" class="form-control" value="" required>
                             </div>
                         </div>
                     </div>

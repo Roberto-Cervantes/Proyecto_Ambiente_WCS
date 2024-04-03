@@ -7,7 +7,7 @@
     ?>
 </head>
 
-<div class="modal fade" id="ver<?php echo $row['id_productos']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ver<?php echo $row['id_producto']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
@@ -22,46 +22,59 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                    <label for="id_productos">Id Producto</label>
-                                    <input type="text" id="id_productos" class="form-control" 
-                                    placeholder="<?php echo $row['id_productos'] ?>">
+                                    <label for="id_producto">Id Producto</label>
+                                    <input type="text" id="id_producto" class="form-control" placeholder="0">
                                 </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
+                                <label for="id_proveedor" class="form-label">ID Proveedor</label>
+                                <input type="text" id="id_proveedor_editado" name="id_proveedor_editado" class="form-control" value="<?php echo $row['id_proveedor']; ?>" required>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="codigo" class="form-label">Codigo del Producto</label>
+                                <input type="text" id="codigo_insertado" name="codigo_insertado" class="form-control" value="<?php echo $row['codigo']; ?>" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                                <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre Producto</label>
-                                    <input type="text" id="nombre_editado" name="nombre_editado" class="form-control" 
-                                    value="<?php echo $row['nombre']; ?>" required>
-                                </fieldset>
+                                    <input type="text" id="nombre_insertado" name="nombre_insertado" class="form-control" value="<?php echo $row['nombre']; ?>" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <fieldset disabled>
+                                        <label for="descripcion" class="form-label">Descripcion</label>
+                                        <input id="descripcion_insertado" name="descripcion_insertado" class="form-control" value="<?php echo $row['descripcion']; ?>" required>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="precio" class="form-label">Precio</label>
+                                    <input type="text" id="precio_insertado" name="precio_insertado" class="form-control" value="<?php echo $row['precio']; ?>" required>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="mb-3">
-                                <fieldset disabled>
-                                    <label for="nombre" class="form-label">Inventario</label>
-                                    <input type="text" id="inventario_insertado" name="inventario_insertado" class="form-control" 
-                                    value="<?php echo getCanton($row['inventarios_id']); ?>" required>
-                                </fieldset>
-                            </div>
+                        <input type="hidden" name="accion" value="insertar_productos">
+                        <input type="hidden" name="id_producto" value="0">
+                        <br>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Insertar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         </div>
-                    </div>
-
-                    <input type="hidden" name="accion" value="ver_productos">
-                    <input type="hidden" name="id_productos" value="<?php echo $row['id_productos'] ?>">
-                    <input type="hidden" name="nombre" value="<?php echo $row['nombre']; ?>">
-                    <input type="hidden" name="inventario" value="<?php echo $row['inventarios_id']; ?>">
-                    <br>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                    </div>
+                    </form>
+                </div>
             </div>
-            </form>
         </div>
     </div>
-</div>
-</div>
+
+</body>
 
 </html>

@@ -62,7 +62,7 @@ CREATE TABLE `facturaciones` (
   `cliente_id` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `total` decimal(10,0) NOT NULL,
-  `Estado` tinyint(1) NOT NULL
+  `Estado` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 CREATE TABLE `inventarios` (

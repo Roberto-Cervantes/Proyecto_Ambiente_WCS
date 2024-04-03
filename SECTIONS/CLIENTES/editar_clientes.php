@@ -31,13 +31,13 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre del Cliente</label>
-                                <input type="text" id="nombre_insertado" name="nombre_insertado" class="form-control" value="" required>
+                                <input type="text" id="nombre_insertado" name="nombre_insertado" class="form-control" placeholder="<?php echo $row['nombre'] ?>">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="apellido" class="form-label">Apellido del Cliente</label>
-                                <input type="text" id="apellido_insertado" name="apellido_insertado" class="form-control" value="" required>
+                                <input type="text" id="apellido_insertado" name="apellido_insertado" class="form-control" placeholder="<?php echo $row['apellido'] ?>">
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -62,8 +62,8 @@
                         </div>
                     </div>
 
-                    <input type="hidden" name="accion" value="editar_provincias">
-                    <input type="hidden" name="id_provincia" value="<?php echo $row['id_provincia'] ?>">
+                    <input type="hidden" name="accion" value="editar_clientes">
+                    <input type="hidden" name="id_cliente" value="<?php echo $row['id_cliente'] ?>">
                     <input type="hidden" name="nombre" value="<?php echo $row['nombre']; ?>">
                     <br>
 

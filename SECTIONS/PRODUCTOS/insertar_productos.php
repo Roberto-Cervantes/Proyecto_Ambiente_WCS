@@ -21,48 +21,59 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                    <label for="id_productos">Id Producto</label>
-                                    <input type="text" id="id_productos" class="form-control" placeholder="0">
+                                    <label for="id_producto">Id Producto</label>
+                                    <input type="text" id="id_producto" class="form-control" placeholder="0">
                                 </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="nombre" class="form-label">Nombre Producto</label>
-                                <input type="text" id="nombre_insertado" name="nombre_insertado" class="form-control" value="" required>
+                                <fieldset disabled>
+                                    <label for="id_proveedor">Id Proveedor</label>
+                                    <input type="text" id="id_proveedor" class="form-control" placeholder="0">
+                                </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="nombre" class="form-label">Inventarios</label>
-                                <select class="form-control form-select form-select-lg mb-3" name="inventario_insertado" aria-label="Large select example">
-                                    <?php
-                                    $result = getProductos();
-                                    if (count($result[0]) > 0) {
-                                        foreach ($result as $rw) {
-                                            echo '<option value="' . $rw[0] . '">' . $rw[1] . '</option>';
-                                        }
-                                    } else {
-                                        echo "No hay datos";
-                                    }
-                                    ?>
-                                </select>
+                                <label for="codigo" class="form-label">Codigo del Producto</label>
+                                <input type="text" id="codigo_insertado" name="codigo_insertado" class="form-control" value="" required>
                             </div>
                         </div>
-                    </div>
-                    <input type="hidden" name="accion" value="insertar_productos">
-                    <input type="hidden" name="id_productos" value=0>
-                    <input type="hidden" name="inventarios" value="<?php echo "1"; ?>">
-                    <br>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">insertar</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    </div>
+                        <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label">Nombre Producto</label>
+                                    <input type="text" id="nombre_insertado" name="nombre_insertado" class="form-control" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <fieldset disabled>
+                                        <label for="descripcion" class="form-label">Descripcion</label>
+                                        <input id="descripcion_insertado" name="descripcion_insertado" class="form-control" placeholder="0">
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="precio" class="form-label">Precio</label>
+                                    <input type="text" id="precio_insertado" name="precio_insertado" class="form-control" value="" required>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="accion" value="insertar_productos">
+                        <input type="hidden" name="id_producto" value="0">
+                        <br>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Insertar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            </form>
         </div>
     </div>
-</div>
-</div>
+
+</body>
 
 </html>

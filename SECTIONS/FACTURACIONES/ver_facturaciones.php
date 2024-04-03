@@ -56,7 +56,7 @@
                             <div class="mb-3">
                                 <fieldset disabled>
                                 <label for="estado" class="form-label">Estado</label>
-                                <input type="text" id="estado_editado" name="estado_editado" class="form-control" value="<?php echo $row['estado']; ?>" required>
+                                <input type="text" id="estado_editado" name="estado_editado" class="form-control" value="<?php echo $row['Estado']; ?>" required>
                                 </fieldset>
                             </div>
                         </div>

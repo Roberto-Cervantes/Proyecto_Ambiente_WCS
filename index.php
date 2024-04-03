@@ -2,9 +2,17 @@
 <html lang="en">
 
 <head>
+
     <?php
     require_once "INCLUDE/head.php";
-    ?>
+    
+    session_start();
+
+    if (!isset($_SESSION['id_usuario'])) {
+    header("Location: index.php");
+    exit();
+    }?>
+
 </head>
 
 <body>
@@ -12,10 +20,19 @@
     include "INCLUDE/nav Index.php";
     ?>
 
-    <main role="main">
 
+    <main role="main">
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
+      <div class="row justify-content-end">
+                <div class="col-md-6">
+                    <div class="user-info">
+                        <span> <?php echo $_SESSION['nombre']; ?></span>
+                        <span>Rol: <?php echo $_SESSION['rol']; ?></span>
+                        <a href="login.php" class="btn btn-danger">Cerrar sesión</a>
+                    </div>
+                </div>
+            </div>
         <div class="container">
           <h1 class="display-3">BIENVENIDO!</h1>
           <p>Bienvenido al proyecto de clase, grupo Curso SC-502-MN - Ambiente Web Cliente Servidor.</p>

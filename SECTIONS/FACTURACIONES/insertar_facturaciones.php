@@ -35,9 +35,9 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="mb-3">
-                                <label for="fecha" class="form-label">Fecha</label>
-                                <input type="datetime" id="fecha_insertado" name="fecha_insertado" class="form-control" value="" required>
+                           <div class="mb-3">
+                               <label for="fecha" class="form-label">Fecha</label>
+                               <input type="date" id="fecha_insertado" name="fecha_insertado" class="form-control" placeholder="YYYY-MM-DD" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
