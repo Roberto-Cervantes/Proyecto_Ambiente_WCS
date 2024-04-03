@@ -13,7 +13,7 @@ function Desconectar()
 function getClientes()
 {
     global $conn;
-    $sql_select_clientes = "SELECT clientes.nombre, clientes.apellido, clientes.id_distrito, clientes.telefono, clientes.email, distritos.id_distrito AS id_distrito_distrito
+    $sql_select_clientes = "SELECT clientes.id_cliente ,clientes.nombre, clientes.apellido, clientes.id_distrito, clientes.telefono, clientes.email, distritos.id_distrito AS id_distrito_distrito
                             FROM clientes
                             INNER JOIN distritos ON clientes.id_distrito = distritos.id_distrito";
     return $result = $conn->query($sql_select_clientes);
@@ -86,14 +86,9 @@ function insertarClientes()
     
     try {
         global $conn;
-        $sql_insert_clientes = "INSERT INTO clientes VALUES (NULL, :nombre, :apellido, NULL, :telefono, :email)";
-        
-        $stmt = $conn->prepare($sql_insert_clientes);
-        $stmt->bindParam(':nombre', $nombre);
-        $stmt->bindParam(':apellido', $apellido);
-        $stmt->bindParam(':telefono', $telefono);
-        $stmt->bindParam(':email', $email);
-        
+        $sql_insert_clientes = "INSERT INTO clientes VALUES (NULL, '".$nombre_insertado."', '".$apellido_insertado.
+        "', '1', '".$telefono_insertado."', '".$email_insertado."')";
+        echo $sql_insert_clientes;
         $stmt = $conn->prepare($sql_insert_clientes);
         $stmt->execute();
     } catch (PDOException $e) {

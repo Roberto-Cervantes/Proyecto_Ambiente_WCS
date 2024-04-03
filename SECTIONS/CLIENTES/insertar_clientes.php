@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="apellido" class="form-label">Apelledo del Cliente</label>
+                                <label for="apellido" class="form-label">Apellido del Cliente</label>
                                 <input type="text" id="apellido_insertado" name="apellido_insertado" class="form-control" value="" required>
                             </div>
                         </div>

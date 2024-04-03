@@ -34,6 +34,12 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
+                                <label for="nombre" class="form-label">Direccion</label>
+                                <input type="text" id="direccion_insertado" name="direccion_insertado" class="form-control" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
                                 <label for="nombre" class="form-label">Cantones</label>
                                 <select class="form-control form-select form-select-lg mb-3" name="canton_insertado" aria-label="Large select example">
                                     <?php

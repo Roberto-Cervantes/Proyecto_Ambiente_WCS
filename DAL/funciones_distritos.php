@@ -14,7 +14,7 @@ function Desconectar()
 function getDistritos()
 {
     global $conn;
-    $sql_select_distritos = "select id_distrito, nombre, canton_id from distritos";
+    $sql_select_distritos = "select id_distrito, nombre, direccion, canton_id from distritos";
     return $result = $conn->query($sql_select_distritos);
 }
 
@@ -73,7 +73,10 @@ function editDistritos()
     extract($_POST);
     try {
         global $conn;
-        $sql_edit_distritos = "update distritos set nombre='" . $nombre_editado . "', canton_id='" . $canton_editado . 
+        $sql_edit_distritos = "update distritos set 
+        nombre='" . $nombre_editado . "', 
+        canton_id='" . $canton_editado . "',
+        direccion='" . $direccion_insertado.
         "' where id_distrito='". $id_distrito . "';";
         echo $sql_edit_distritos;
         $stmt = $conn->prepare($sql_edit_distritos);
@@ -110,7 +113,14 @@ function insertarDistritos()
     
     try {
         global $conn;
-        $sql_insert_distritos = "insert into distritos values (NULL,'".$nombre_insertado."','".$canton_insertado."')";
+        $sql_insert_distritos = "insert into distritos values (
+            NULL,'".
+            $nombre_insertado.
+            "','".
+            $direccion_insertado.
+            "','".
+            $canton_insertado.
+            "')";
         //echo $sql_insert_cantones;
         $stmt = $conn->prepare($sql_insert_distritos);
         $stmt->execute();

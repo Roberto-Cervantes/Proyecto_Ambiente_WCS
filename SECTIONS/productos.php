@@ -39,7 +39,7 @@ require_once "../DAL/funciones_productos.php";
                 <tbody>
 
                     <?php
-                    $result = getProducto();
+                    $result = getProductos();
                     if ($result->num_rows > 0) {
                         foreach ($result as $row) {
                             echo '<tr>';
@@ -61,8 +61,8 @@ require_once "../DAL/funciones_productos.php";
                             echo ' ';
                             echo '</td>';
                             require "PRODUCTOS/editar_productos.php";
-                            require "PRODUCTOS/ver_productos.php";
-                            require "PRODUCTOS/borrar_productos.php";
+                            //require "PRODUCTOS/ver_productos.php";
+                            //require "PRODUCTOS/borrar_productos.php";
                             echo '</tr>';
                         }
                     } else {

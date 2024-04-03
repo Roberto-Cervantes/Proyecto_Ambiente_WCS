@@ -58,9 +58,9 @@ require_once "../DAL/funciones_clientes.php";
                             <i class="fa fa-edit ">Borrar</i></button>';
                             echo ' ';
                             echo '</td>';
-                            require "CLIENTES/editar_clientes.php";
-                            require "CLIENTES/ver_clientes.php";
-                            require "CLIENTES/borrar_clientes.php";
+                            //require "CLIENTES/editar_clientes.php";
+                            //require "CLIENTES/ver_clientes.php";
+                            //require "CLIENTES/borrar_clientes.php";
                             echo '</tr>';
                         }
                     } else {

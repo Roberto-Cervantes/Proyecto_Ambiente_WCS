@@ -1,45 +1,58 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['id_usuario'])) {
-    header("Location: index.php");
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
+<head>
     <?php
     require_once "INCLUDE/head.php";
     ?>
-
 </head>
+
 <body>
-
-<div class="container">
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-6">
-            <h2 class="mb-4">Bienvenido, <?php echo $_SESSION['nombre']; ?></h2>
-            <p>Rol: <?php echo $_SESSION['rol']; ?></p>
-            <a href="cerrar_sesion.php" class="btn btn-danger">Cerrar sesión</a>
-        </div>
-    </div>
-</div>
-
-<?php
-    include "INCLUDE/nav.php";
-    include "INCLUDE/plantilla-main.php";
-    include "INCLUDE/footer.php";
+    <?php
+    include "INCLUDE/nav Index.php";
     ?>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">BIENVENIDO!</h1>
+          <p>Bienvenido al proyecto de clase, grupo Curso SC-502-MN - Ambiente Web Cliente Servidor.</p>
+          <p><a class="btn btn-primary btn-lg" href="FILES/Proyecto.pdf" role="button">Mas información</a></p>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Facturar</h2>
+            <p>Crea una factura a clientes </p>
+            <p><a class="btn btn-secondary" href="SECTIONS/facturaciones.php" role="button">Ir &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Comprar</h2>
+            <p>Compra nuevo inventario </p>
+            <p><a class="btn btn-secondary" href="SECTIONs/compras.php" role="button">Ir &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Revisar inventario</h2>
+            <p>Revisa Inventario Disponible</p>
+            <p><a class="btn btn-secondary" href="SECTIONS/inventarios.php" role="button">Ir &raquo;</a></p>
+          </div>
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
+
+
+    <?php
+    include "INCLUDE/footer.php";
+    ?>
 </body>
+
 </html>
-
-

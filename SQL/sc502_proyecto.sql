@@ -127,9 +127,9 @@ ALTER TABLE `compras`
   ADD KEY `id_producto` (`id_producto`) USING BTREE;
 
 ALTER TABLE `detalles_facturas`
-  ADD PRIMARY KEY (`id_detalle number`),
+  ADD PRIMARY KEY (`id_detalle_number`),
   ADD KEY `producto_id` (`producto_id`),
-  ADD KEY `factura_id number` (`factura_id number`);
+  ADD KEY `factura_id number` (`factura_id_number`);
 
 ALTER TABLE `detalle_compras`
   ADD PRIMARY KEY (`id_detalle`,`compra_id`),
@@ -180,7 +180,7 @@ ALTER TABLE `compras`
   MODIFY `id_compra` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `detalles_facturas`
-  MODIFY `id_detalle number` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detalle_number` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `detalle_compras`
   MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT;
@@ -220,7 +220,7 @@ ALTER TABLE `compras`
   ADD CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE `detalles_facturas`
-  ADD CONSTRAINT `detalles_facturas_ibfk_1` FOREIGN KEY (`factura_id number`) REFERENCES `facturaciones` (`id_factura`),
+  ADD CONSTRAINT `detalles_facturas_ibfk_1` FOREIGN KEY (`factura_id_number`) REFERENCES `facturaciones` (`id_factura`),
   ADD CONSTRAINT `detalles_facturas_ibfk_2` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id_producto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE `detalle_compras`

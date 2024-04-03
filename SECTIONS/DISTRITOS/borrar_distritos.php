@@ -7,7 +7,7 @@
     ?>
 </head>
 
-<div class="modal fade" id="borrar<?php echo $row['id_distritos']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="borrar<?php echo $row['id_distrito']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
@@ -22,9 +22,9 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                    <label for="id_distritos">Id Distrito</label>
-                                    <input type="text" id="id_distritos" class="form-control" 
-                                    placeholder="<?php echo $row['id_distritos'] ?>">
+                                    <label for="id_distrito">Id Distrito</label>
+                                    <input type="text" id="id_distrito" class="form-control" 
+                                    placeholder="<?php echo $row['id_distrito'] ?>">
                                 </fieldset>
                             </div>
                         </div>
@@ -33,6 +33,14 @@
                                 <fieldset disabled>
                                     <label for="nombre" class="form-label">Nombre Distrito</label>
                                     <input type="text" id="nombre_editado" name="nombre_editado" class="form-control" value="<?php echo $row['nombre']; ?>" required>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <fieldset disabled>
+                                    <label for="direccion" class="form-label">Direccion</label>
+                                    <input type="text" id="direccion_editado" name="direccion_editado" class="form-control" value="<?php echo $row['direccion']; ?>" required>
                                 </fieldset>
                             </div>
                         </div>
@@ -48,8 +56,9 @@
                     </div>
 
                     <input type="hidden" name="accion" value="borrar_distritos">
-                    <input type="hidden" name="id_distritos" value="<?php echo $row['id_distritos'] ?>">
+                    <input type="hidden" name="id_distrito" value="<?php echo $row['id_distrito'] ?>">
                     <input type="hidden" name="nombre" value="<?php echo $row['nombre']; ?>">
+                    <input type="hidden" name="direccion" value="<?php echo $row['direccion']; ?>">
                     <input type="hidden" name="canton" value="<?php echo $row['canton_id']; ?>">
                     <br>
                     <div class="modal-footer">

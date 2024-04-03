@@ -23,7 +23,7 @@ require_once "../DAL/funciones_almacenes.php";
                 <?php
                 echo '<button type="button" class="btn btn-success" data-toggle="modal" 
                 data-target="#insertar">
-                <i class="fa fa-edit ">Nueva Provincia</i></button>';
+                <i class="fa fa-edit ">Agregar Almacen</i></button>';
                 require "ALMACENES/insertar_almacenes.php";
                 ?>
             </p>
@@ -42,19 +42,19 @@ require_once "../DAL/funciones_almacenes.php";
                     if ($result->num_rows > 0) {
                         foreach ($result as $row) {
                             echo '<tr>';
-                            echo '<td>' . $row['id_almacenes'] . '</td>';
-                            echo '<td>' . $row['nombre'] . '</td>';
+                            echo '<td>' . $row['id_almacen'] . '</td>';
+                            echo '<td>' . $row['ubicacion'] . '</td>';
                             echo '<td width=250>';
                             echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
-                            data-target="#ver' . $row['id_almacenes'] . ' ">
+                            data-target="#ver' . $row['id_almacen'] . ' ">
                             <i class="fa fa-edit ">Ver</i></button>';
                             echo ' ';
                             echo '<button type="button" class="btn btn-success" data-toggle="modal" 
-                            data-target="#editar' . $row['id_almacenes'] . ' ">
+                            data-target="#editar' . $row['id_almacen'] . ' ">
                             <i class="fa fa-edit ">Actualizar</i></button>';
                             echo ' ';
                             echo '<button type="button" class="btn btn-danger" data-toggle="modal" 
-                            data-target="#borrar' . $row['id_almacenes'] . ' ">
+                            data-target="#borrar' . $row['id_almacen'] . ' ">
                             <i class="fa fa-edit ">Borrar</i></button>';
                             echo ' ';
                             echo '</td>';

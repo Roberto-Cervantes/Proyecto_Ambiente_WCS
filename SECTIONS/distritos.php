@@ -33,6 +33,7 @@ require_once "../DAL/funciones_distritos.php";
                         <th>Id Distrito</th>
                         <th>Nombre</th>
                         <th>Canton</th>
+                        <th>Direccion</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -46,6 +47,7 @@ require_once "../DAL/funciones_distritos.php";
                             echo '<td>' . $row['id_distrito'] . '</td>';
                             echo '<td>' . $row['nombre'] . '</td>';
                             echo '<td>' . getCanton($row['canton_id']) . '</td>';
+                            echo '<td>' . $row['direccion'] . '</td>';
                             echo '<td width=250>';
                             echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
                             data-target="#ver' . $row['id_distrito'] . ' ">
