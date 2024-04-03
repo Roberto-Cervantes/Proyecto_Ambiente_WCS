@@ -241,6 +241,66 @@ ALTER TABLE `productos`
 
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`);
+
+
+INSERT INTO provincias (id_provincia, nombre)
+VALUES 
+    (1, 'San José'),
+    (2, 'Alajuela'),
+    (3, 'Cartago'),
+    (4, 'Heredia'),
+    (5, 'Guanacaste'),
+    (6, 'Puntarenas'),
+    (7, 'Limón');
+
+INSERT INTO cantones (id_canton, nombre, id_provincia)
+VALUES 
+    (1, 'San José', 1),
+    (2, 'Escazú', 1),
+    (3, 'Desamparados', 1),
+    (4, 'Alajuela', 2),
+    (5, 'San Ramón', 2),
+    (6, 'Cartago', 3),
+    (7, 'Paraíso', 3);
+
+
+INSERT INTO distritos (id_distrito, nombre, direccion, canton_id)
+VALUES 
+    (1, 'San José', 'Avenida 1, Calle 5', 1),
+    (2, 'Escazú', 'Avenida Escazú, Calle Principal', 2),
+    (3, 'Desamparados', 'Desamparados Centro, Calle Principal', 3),
+    (4, 'Alajuela', 'Alajuela Centro, Avenida Central', 4),
+    (5, 'San Ramón', 'San Ramón Centro, Calle 3', 5),
+    (6, 'Cartago', 'Cartago Centro, Avenida 2', 6),
+    (7, 'Paraíso', 'Paraíso Centro, Calle Principal', 7);
+
+
+INSERT INTO clientes (id_cliente, nombre, apellido, id_distrito, telefono, email)
+VALUES 
+    (1, 'Juan', 'Pérez', 1, '2222-3333', 'juan@example.com'),
+    (2, 'María', 'González', 2, '5555-6666', 'maria@example.com'),
+    (3, 'Carlos', 'Rodríguez', 3, '7777-8888', 'carlos@example.com'),
+    (4, 'Ana', 'López', 4, '9999-0000', 'ana@example.com'),
+    (5, 'Pedro', 'Martínez', 5, '1111-2222', 'pedro@example.com'),
+    (6, 'Laura', 'Hernández', 6, '3333-4444', 'laura@example.com'),
+    (7, 'Luis', 'Sánchez', 7, '4444-5555', 'luis@example.com');
+
+
+INSERT INTO facturaciones (id_factura, client_id, fecha, total, Estado)
+VALUES 
+    (1, 1, '2024-04-03', 150.00, 'Pagado'),
+    (2, 2, '2024-04-02', 200.00, 'Pendiente'),
+    (3, 3, '2024-04-01', 100.00, 'Pagado'),
+    (4, 4, '2024-03-31', 300.00, 'Pendiente'),
+    (5, 5, '2024-03-30', 250.00, 'Pagado'),
+    (6, 6, '2024-03-29', 180.00, 'Pagado'),
+    (7, 7, '2024-03-28', 220.00, 'Pendiente');
+
+
+
+
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
