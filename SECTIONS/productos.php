@@ -31,9 +31,11 @@ require_once "../DAL/funciones_productos.php";
                 <thead>
                     <tr>
                         <th>Id Producto</th>
+                        <th>Id proveedor</th>
+                        <th>codigo</th>
                         <th>Nombre</th>
-                        <th>Inventario</th>
-                        <th>Action</th>
+                        <th>descripción</th>
+                        <th>precio</th>
                     </tr>
                 </thead>
                 <tbody>
