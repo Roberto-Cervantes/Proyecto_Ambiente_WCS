@@ -23,7 +23,7 @@
                             <div class="mb-3">
                                 <fieldset disabled>
                                     <label for="id_producto">Id producto</label>
-                                    <input type="text" id="id_producto" class="form-control"  placeholder="<?php echo $row['id_productos'] ?>">
+                                    <input type="text" id="id_producto" class="form-control"  placeholder="<?php echo $row['id_producto'] ?>">
                                 </fieldset>
                             </div>
                         </div>

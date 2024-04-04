@@ -9,65 +9,86 @@ function Desconectar()
     $conn->close();
 }
 
-// obtener el listado de todos los productos
 function getProductos()
 {
     global $conn;
-    $sql_select_productos = "SELECT id_productos, nombre, inventarios_id FROM productos";
-    return $conn->query($sql_select_productos);
+    $sql_select_productos = "SELECT id_producto, nombre FROM productos";
+    $result = $conn->query($sql_select_productos);
+    if ($result && $result->num_rows > 0) {
+        // Crear un array para almacenar los resultados
+        $productos = array();
+        // Iterar sobre los resultados y guardarlos en el array
+        while ($row = $result->fetch_assoc()) {
+            $productos[] = $row;
+        }
+        return $productos;
+    } else {
+        echo "No se encontraron productos.";
+        return false;
+    }
 }
 
-// obtener el nombre de un inventario en específico por id inventario
-function getInventario($id_inventario)
+function getProducto($id_producto = null)
 {
     global $conn;
-    $sql_select_inventario = "SELECT nombre FROM inventarios WHERE id_inventarios=$id_inventario";
-    $result = $conn->query($sql_select_inventario);
+    if ($id_producto !== null) {
+        $sql_select_producto = "SELECT nombre FROM productos WHERE id_producto=?";
+        $stmt = $conn->prepare($sql_select_producto);
+        $stmt->bind_param('i', $id_producto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['nombre'];
+    } else {
+        return null;
+    }
+}
+
+function getPrecioProducto($id_producto)
+{
+    global $conn;
+    $sql_select_precio = "SELECT precio FROM productos WHERE id_producto=?";
+    $stmt = $conn->prepare($sql_select_precio);
+    $stmt->bind_param('i', $id_producto);
+    $stmt->execute();
+    $result = $stmt->get_result();
     $row = $result->fetch_assoc();
-    return $row['nombre'];
-}
-
-// obtener el id del inventario en la tabla productos
-function getIdInventarioProductos($id_producto)
-{
-    global $conn;
-    $sql_select_inventario = "SELECT inventarios_id FROM productos WHERE id_productos=$id_producto";
-    $result = $conn->query($sql_select_inventario);
-    $row = $result->fetch_assoc();
-    return $row['inventarios_id'];
-}
-
-// obtener el listado de todos los inventarios
-function getInventarios()
-{
-    global $conn;
-    $sql_select_inventarios = "SELECT id_inventarios, nombre FROM inventarios";
-    $result = $conn->query($sql_select_inventarios);
-    return $result->fetch_all();
+    return $row['precio'];
 }
 
 if (isset($_POST['accion'])) {
     switch ($_POST['accion']) {
         case 'editar_productos':
-            editProductos();
+            editarProducto();
             break;
         case 'borrar_productos':
-            borrarProductos();
+            borrarProducto();
             break;
         case 'insertar_productos':
-            insertarProductos();
+            insertarProducto();
+            break;
+        default:
+            echo "Accion desconocida: " . $_POST['accion'];
             break;
     }
 }
 
-function editProductos()
+function editarProducto()
 {
     extract($_POST);
+    
     try {
         global $conn;
-        $sql_edit_productos = "UPDATE productos SET nombre=?, inventarios_id=? WHERE id_productos=?";
+        
+        // Obtener los valores del formulario
+        $nombre_editado = $nombre_insertado;
+        $precio_editado = $precio_insertado; 
+        $id_producto = $_POST['id_producto']; // Agregar la obtención de id_producto
+
+        // Realizar la actualización en la base de datos
+        $sql_edit_productos = "UPDATE productos SET nombre = ?, precio = ? WHERE id_producto = ?";
         $stmt = $conn->prepare($sql_edit_productos);
-        $stmt->bind_param("sii", $nombre_editado, $inventario_editado, $id_productos);
+        $stmt->bind_param('sss', $nombre_editado, $precio_editado, $id_producto); 
         $stmt->execute();
     } catch (PDOException $e) {
         echo "<br>" . $e->getMessage();
@@ -77,32 +98,47 @@ function editProductos()
     header('Location: ../SECTIONS/productos.php');
 }
 
-function borrarProductos()
+function borrarProducto()
 {
     extract($_POST);
+
     try {
         global $conn;
-        $sql_borrar_productos = "DELETE FROM productos WHERE id_productos=?";
-        $stmt = $conn->prepare($sql_borrar_productos);
-        $stmt->bind_param("i", $id_productos);
-        $stmt->execute();
-    } catch (PDOException $e) {
-        echo "<br>" . $e->getMessage();
+        // Borrar el producto de la base de datos
+        if (!isset($id_producto)) {
+            throw new Exception("ID de producto no especificado.");
+        }
+        $sql_delete_productos = "DELETE FROM productos WHERE id_producto = ?";
+        $stmt = $conn->prepare($sql_delete_productos);
+        if (!$stmt) {
+            throw new Exception("Error al preparar la consulta: " . $conn->error);
+        }
+        $stmt->bind_param('i', $id_producto);
+        if (!$stmt->execute()) {
+            throw new Exception("Error al ejecutar la consulta: " . $stmt->error);
+        }
+       
+        $conn->close();
+        // Redirigir al usuario después de la eliminación
+        header('Location: ../SECTIONS/productos.php');
+        exit(); 
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+        // Cerrar la conexión a la base de datos en caso de error
+        $conn->close();
     }
-
-    $conn = null;
-    header('Location: ../SECTIONS/productos.php');
 }
 
-function insertarProductos()
+function insertarProducto()
 {
     extract($_POST);
+
     try {
         global $conn;
-        $sql_insert_productos = "INSERT INTO productos VALUES (NULL, ?, ?)";
+        $sql_insert_productos = "INSERT INTO productos (nombre, precio) VALUES (?, ?)";
         $stmt = $conn->prepare($sql_insert_productos);
-        $stmt->bind_param("si", $nombre_insertado, $inventario_insertado);
-        $stmt->execute();
+        $stmt->bind_param('ss', $_POST['nombre_insertado'], $_POST['precio_insertado']);
+        $stmt->execute(); 
     } catch (PDOException $e) {
         echo "<br>" . $e->getMessage();
     }
