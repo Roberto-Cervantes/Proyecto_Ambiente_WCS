@@ -46,8 +46,9 @@ require_once "../DAL/funciones_productos.php";
                         foreach ($result as $row) {
                             echo '<tr>';
                             echo '<td>' . $row['id_producto'] . '</td>';
+                            echo '<td>' . $row['codigo'] . '</td>';
                             echo '<td>' . $row['nombre'] . '</td>';
-                            echo '<td>' . getInventarios($row['inventarios_id']) . '</td>';
+                            echo '<td>' . getProductoProveedor($row['id_proveedor']) . '</td>';
                             echo '<td width=250>';
                             echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
                             data-target="#ver' . $row['id_producto'] . ' ">

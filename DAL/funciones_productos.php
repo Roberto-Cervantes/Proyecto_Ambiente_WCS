@@ -12,7 +12,7 @@ function Desconectar()
 function getProductos()
 {
     global $conn;
-    $sql_select_productos = "SELECT id_producto, nombre FROM productos";
+    $sql_select_productos = "SELECT id_producto, id_proveedor,codigo, nombre,descripcion, precio FROM productos";
     $result = $conn->query($sql_select_productos);
     if ($result && $result->num_rows > 0) {
         // Crear un array para almacenar los resultados
@@ -28,7 +28,7 @@ function getProductos()
     }
 }
 
-function getProducto($id_producto = null)
+function getProductoProveedor($id_producto = null)
 {
     global $conn;
     if ($id_producto !== null) {
