@@ -31,9 +31,11 @@ require_once "../DAL/funciones_inventarios.php";
                 <thead>
                     <tr>
                         <th>Id Inventario</th>
-                        <th>Nombre</th>
-                        <th>Almacen</th>
-                        <th>Action</th>
+                        <th>Id Almacén</th>
+                        <th>Cantidad disponible</th>
+                        <th>Producto</th>
+                        <th>Ubicación</th>
+                       
                     </tr>
                 </thead>
                 <tbody>
@@ -44,8 +46,10 @@ require_once "../DAL/funciones_inventarios.php";
                         foreach ($result as $row) {
                             echo '<tr>';
                             echo '<td>' . $row['id_inventario'] . '</td>';
-                            echo '<td>' . $row['nombre'] . '</td>';
-                            echo '<td>' . getAlmacenes($row['id_almacenes']) . '</td>';
+                            echo '<td>' . $row['Cantidad_disponible'] . '</td>';
+                            echo '<td>' . getAlmacenes($row['almacen_id']) . '</td>';
+                            echo '<td>' . $row['producto_id'] . '</td>';
+                            echo '<td>' . $row['ubicacion'] . '</td>';
                             echo '<td width=250>';
                             echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
                             data-target="#ver' . $row['id_inventarios'] . ' ">

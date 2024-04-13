@@ -12,14 +12,14 @@ function Desconectar()
 function getinventarios()
 {
     global $conn;
-    $sql_select_inventarios = "select id_inventarios, nombre, almacenes_id from inventarios";
+    $sql_select_inventarios = "select id_inventario, producto_id, almacen_id, Ubicacion, Cantidad_disponible from inventarios";
     return $result = $conn->query($sql_select_inventarios);
 }
 
-function getinventariosById($id_inventarios) // Cambiado el nombre de la función
+function getinventariosById($id_inventario) // Cambiado el nombre de la función
 {
     global $conn;
-    $sql_select_inventarios = "select nombre from almacenes where id_Aa=$id_inventarios"; // Aquí también parece haber un error en la consulta SQL
+    $sql_select_inventarios = "select nombre from almacenes where id_Aa=$id_inventario"; // Aquí también parece haber un error en la consulta SQL
     $result = $conn->query($sql_select_inventarios);
     $row = $result->fetch_assoc();
     return $row['nombre'];

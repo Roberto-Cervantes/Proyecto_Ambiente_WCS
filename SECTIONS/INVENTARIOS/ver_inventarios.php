@@ -19,39 +19,47 @@
                 <form action="../DAL/funciones_inventarios.php" method="POST">
 
                     <div class="row">
-                        <div class="col-sm-6">
+                    <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                    <label for="id_inventarios">Id inventario</label>
-                                    <input type="text" id="id_inventarios" class="form-control" 
-                                    placeholder="<?php echo $row['id_inventarios'] ?>">
+                                    <label for="id_inventario">Id Inventario</label>
+                                    <input type="text" id="id_inventario_editado" class="form-control" placeholder="<?php echo $row['id_inventario'] ?>">
                                 </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                    <label for="nombre" class="form-label">Nombre inventario</label>
-                                    <input type="text" id="nombre_editado" name="nombre_editado" class="form-control" 
-                                    value="<?php echo $row['nombre']; ?>" required>
+                                    <label for="almacen_id" class="form-label">Id Almacén</label>
+                                    <input type="text" id="almacen_id_editado" name="almacen_id_editado" class="form-control" value="<?php echo $row['almacen_id']; ?>" required>
                                 </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                    <label for="nombre" class="form-label">Almacenes</label>
-                                    <input type="text" id="almacenes_insertados" name="almacenes_insertados" class="form-control" 
-                                    value="<?php echo getProvincia($row['almacenes_id']); ?>" required>
+                                    <label for="Cantidad_disponible" class="form-label">Cantidad disponible</label>
+                                    <input type="text" id="Cantidad_disponible" name="Cantidad_disponible" class="form-control" 
+                                    value="<?php echo getInventarios($row['Cantidad_disponible']); ?>" required>
                                 </fieldset>
                             </div>
                         </div>
-                    </div>
+                    
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <fieldset disabled>
+                                    <label for="producto_id" class="form-label">Productos</label>
+                                    <input type="text" id="producto_id" name="producto_id" class="form-control" 
+                                    value="<?php echo getInventarios($row['producto_id']); ?>" required>
+                                </fieldset>
+                            </div>
+                        </div>
 
-                    <input type="hidden" name="accion" value="ver_inventarios">
+                        <input type="hidden" name="accion" value="ver_inventarios">
                     <input type="hidden" name="id_inventarios" value="<?php echo $row['id_inventarios'] ?>">
-                    <input type="hidden" name="nombre" value="<?php echo $row['nombre']; ?>">
-                    <input type="hidden" name="almacenes" value="<?php echo $row['almacenes_id']; ?>">
+                    <input type="hidden" name="Cantidad_disponible" value="<?php echo $row['Cantidad_disponible']; ?>">
+                    <input type="hidden" name="producto_id" value="<?php echo $row['producto_id']; ?>">
+                    <input type="hidden" name="Ubicacion" value="<?php echo $row['Ubicacion']; ?>">
                     <br>
 
                     <div class="modal-footer">
