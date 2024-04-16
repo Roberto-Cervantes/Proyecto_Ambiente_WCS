@@ -18,74 +18,56 @@
                 <form action="../DAL/funciones_inventarios.php" method="POST">
 
                     <div class="row">
-                    <div class="col-sm-6">
+                        <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                    <label for="id_inventario">Id Inventario</label>
-                                    <input type="text" id="id_inventario_editado" class="form-control" placeholder="<?php echo $row['id_inventario'] ?>">
+                                    <label for="id_inv">Id Inventario</label>
+                                    <input type="text" id="id_inventario" class="form-control" placeholder="0">
                                 </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <fieldset disabled>
-                                    <label for="almacen_id" class="form-label">Id Almacén</label>
-                                    <input type="text" id="almacen_id_editado" name="almacen_id_editado" class="form-control" value="<?php echo $row['almacen_id']; ?>" required>
-                                </fieldset>
+                                <label for="product" class="form-label">Id Producto</label>
+                                <input type="text" id="producto_id_insertado" name="producto_id_insertado" 
+                                class="form-control" value="" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <fieldset disabled>
-                                    <label for="Cantidad_disponible" class="form-label">Cantidad disponible</label>
-                                    <input type="text" id="Cantidad_disponible" name="Cantidad_disponible" class="form-control" 
-                                    value="<?php echo getInventarios($row['Cantidad_disponible']); ?>" required>
-                                </fieldset>
+                                <label for="almacen" class="form-label">Id Almacén</label>
+                                <input type="text" id="almacen_id_insertado" name="almacen_id_insertado" 
+                                class="form-control" value="" required>
                             </div>
                         </div>
-                    
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <fieldset disabled>
-                                    <label for="producto_id" class="form-label">Productos</label>
-                                    <input type="text" id="producto_id" name="producto_id" class="form-control" 
-                                    value="<?php echo getInventarios($row['producto_id']); ?>" required>
-                                </fieldset>
+                                <label for="Ubicacion" class="form-label">Ubicacion</label>
+                                <input type="text" id="Ubicacion_insertado" name="Ubicacion_insertado" 
+                                class="form-control" value="" required>
                             </div>
                         </div>
-                    
-                   
-                                    <?php
-
-
-
-                                    $result = getInventarios();
-                                    if (count($result[0]) > 0) {
-                                        foreach ($result as $rw) {
-                                            echo '<option value="' . $rw[0] . '">' . $rw[1] . '</option>';
-                                        }
-                                    } else {
-                                        echo "No hay datos";
-                                    }
-                                    ?>
-                                </select>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="Cant" class="form-label">Cantidad disponible</label>
+                                <input type="text" id="Cantidad_insertado" name="Cantidad_insertado" 
+                                class="form-control" value="" required>
                             </div>
                         </div>
-                    </div>
-                    <input type="hidden" name="accion" value="insertar_inventarios">
-                    <input type="hidden" name="id_inventarios" value="<?php echo $row['id_inventarios'] ?>">
-                    <input type="hidden" name="Cantidad_disponible" value="<?php echo $row['Cantidad_disponible']; ?>">
-                    <input type="hidden" name="producto_id" value="<?php echo $row['producto_id']; ?>">
-                    <input type="hidden" name="Ubicacion" value="<?php echo $row['Ubicacion']; ?>">
-                    <br>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">insertar</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     </div>
             </div>
-            </form>
+        </div>
+        <input type="hidden" name="accion" value="insertar_inventarios">
+        <input type="hidden" name="id_inventario" value="0">
+        <br>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">insertar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         </div>
     </div>
+    </form>
+</div>
+</div>
 </div>
 </div>
 

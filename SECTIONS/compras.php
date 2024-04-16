@@ -7,6 +7,12 @@ require_once "../DAL/funciones_compras.php";
 <head>
     <?php
     require_once "../INCLUDE/head.php";
+    session_start();
+
+    if (!isset($_SESSION['id_usuario'])) {
+        header("Location: ../login.php");
+        exit();
+    }
     ?>
 </head>
 
@@ -41,31 +47,36 @@ require_once "../DAL/funciones_compras.php";
 
                     <?php
                     $result = getCompras();
-                    foreach ($result as $row) {
-                        echo '<tr>';
-                        echo '<td>' . $row['id_compra'] . '</td>';
-                        echo '<td>' . getProductoCompra($row['id_producto']) . '</td>';
-                        echo '<td>' . $row['fechas'] . '</td>';
-                        echo '<td>' . ($row['estado'] == 1 ? 'Activo' : 'Inactivo') . '</td>';
-                        echo '<td width=250>';
-                        echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
+                    if ($result->num_rows > 0) {
+                        foreach ($result as $row) {
+                            echo '<tr>';
+                            echo '<td>' . $row['id_compra'] . '</td>';
+                            echo '<td>' . getProductoCompra($row['id_producto']) . '</td>';
+                            echo '<td>' . $row['fechas'] . '</td>';
+                            echo '<td>' . ($row['estado'] == 1 ? 'Activo' : 'Inactivo') . '</td>';
+                            echo '<td width=250>';
+                            echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
                         data-target="#ver' . $row['id_compra'] . ' ">
                         <i class="fa fa-edit ">Ver</i></button>';
-                        echo ' ';
-                        echo '<button type="button" class="btn btn-success" data-toggle="modal" 
+                            echo ' ';
+                            echo '<button type="button" class="btn btn-success" data-toggle="modal" 
                         data-target="#editar' . $row['id_compra'] . ' ">
                         <i class="fa fa-edit ">Actualizar</i></button>';
-                        echo ' ';
-                        echo '<button type="button" class="btn btn-danger" data-toggle="modal" 
+                            echo ' ';
+                            echo '<button type="button" class="btn btn-danger" data-toggle="modal" 
                         data-target="#borrar' . $row['id_compra'] . ' ">
                         <i class="fa fa-edit ">Borrar</i></button>';
-                        echo ' ';
-                        echo '</td>';
-                        require "COMPRAS/editar_compras.php";
-                        require "COMPRAS/ver_compras.php";
-                        require "COMPRAS/borrar_compras.php";
-                        echo '</tr>';
+                            echo ' ';
+                            echo '</td>';
+                            require "COMPRAS/editar_compras.php";
+                            require "COMPRAS/ver_compras.php";
+                            require "COMPRAS/borrar_compras.php";
+                            echo '</tr>';
+                        }
+                    } else {
+                        echo "No hay datos";
                     }
+                    Desconectar();
                     ?>
                 </tbody>
             </table>

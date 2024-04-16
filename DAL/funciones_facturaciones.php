@@ -48,7 +48,7 @@ if (isset($_POST['accion'])) {
         global $conn;
         $sql_edit_clientes = "UPDATE facturaciones set  fecha='" . $fecha_editado . "',
                                                         total='" . $total_editado . "',
-                                                        Estado='" . $Estado_editado . "'
+                                                        Estado='" . $id_estado_insertado . "'
                                                         where id_factura=$id_factura";
         //echo $sql_edit_clientes;
         $stmt = $conn->prepare($sql_edit_facturaciones);
@@ -67,7 +67,7 @@ function borrarFacturaciones()
     
     try {
         global $conn;
-        $sql_edit_facturaciones = "DELETE from facruraciones where id_factura=$id_factura";
+        $sql_edit_facturaciones = "DELETE from facturaciones where id_factura=$id_factura";
         //echo $sql_edit_facturaciones;
         $stmt = $conn->prepare($sql_edit_facturaciones);
         $stmt->execute();
@@ -82,16 +82,11 @@ function borrarFacturaciones()
  function insertarFacturaciones()
 {
     extract($_POST);
-    
     try {
-        global $conn;
-        $sql_insert_facturaciones = "INSERT INTO facturaciones VALUES (NULL, NULL, :fecha, :total, :Estado)";
-        
-        $stmt = $conn->prepare($sql_insert_facturaciones);
-        $stmt->bindParam(':fecha', $fecha);
-        $stmt->bindParam(':total', $total);
-        $stmt->bindParam(':Estado', $Estado);
-        
+        global $conn;  
+        $sql_insert_facturaciones = "INSERT INTO facturaciones VALUES (NULL,".$id_cliente_insertado.", 
+        STR_TO_DATE('".$fecha_insertado."','%Y-%m-%d'), ".$total_insertado.", ".$id_estado_insertado.")";
+        echo $sql_insert_facturaciones;
         $stmt = $conn->prepare($sql_insert_facturaciones);
         $stmt->execute();
     } catch (PDOException $e) {

@@ -7,6 +7,12 @@ require_once "../DAL/funciones_inventarios.php";
 <head>
     <?php
     require_once "../INCLUDE/head.php";
+    session_start();
+
+    if (!isset($_SESSION['id_usuario'])) {
+    header("Location: ../login.php");
+    exit();
+    }
     ?>
 </head>
 
@@ -40,18 +46,18 @@ require_once "../DAL/funciones_inventarios.php";
                 </thead>
                 <tbody>
 
-                    <?php
+                    <?php 
                     $result = getInventarios();
                     if ($result->num_rows > 0) {
                         foreach ($result as $row) {
                             echo '<tr>';
                             echo '<td>' . $row['id_inventario'] . '</td>';
-                            echo '<td>' . $row['Cantidad_disponible'] . '</td>';
-                            echo '<td>' . getAlmacenes($row['almacen_id']) . '</td>';
                             echo '<td>' . $row['producto_id'] . '</td>';
-                            echo '<td>' . $row['ubicacion'] . '</td>';
+                            echo '<td>' . getCantidadByProduct($row['producto_id']) . '</td>';
+                            echo '<td>' . $row['Ubicacion'] . '</td>';
+                            echo '<td>' . $row['Cantidad_disponible'] . '</td>';
                             echo '<td width=250>';
-                            echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
+                            /*echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
                             data-target="#ver' . $row['id_inventarios'] . ' ">
                             <i class="fa fa-edit ">Ver</i></button>';
                             echo ' ';
@@ -66,7 +72,7 @@ require_once "../DAL/funciones_inventarios.php";
                             echo '</td>';
                             require "INVENTARIOS/editar_inventarios.php";
                             require "INVENTARIOS/ver_inventarios.php";
-                            require "INVENTARIOS/borrar_inventarios.php";
+                            require "INVENTARIOS/borrar_inventarios.php";*/
                             echo '</tr>';
                         }
                     } else {

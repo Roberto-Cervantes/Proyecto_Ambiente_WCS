@@ -10,23 +10,13 @@ function Desconectar()
     $conn->close();
 }
 
+
 function getCompras()
 {
     global $conn;
     $sql_select_compras = "SELECT id_compra, id_producto, fechas, estado FROM compras";
-    $result = $conn->query($sql_select_compras);
-    if ($result && $result->num_rows > 0) {
-        // Crear un array para almacenar los resultados
-        $compras = array();
-        // Iterar sobre los resultados y guardarlos en el array
-        while ($row = $result->fetch_assoc()) {
-            $compras[] = $row;
-        }
-        return $compras;
-    } else {
-        echo "No se encontraron compras.";
-        return false;
-    }
+    return $result = $conn->query($sql_select_compras);
+
 }
 
 function getProductos()

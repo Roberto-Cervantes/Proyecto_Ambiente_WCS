@@ -49,6 +49,13 @@
         </li>
         <li><a href="nosotros.php">Nosotros</a></li>
         <li><a href="contactenos.php">Contactenos</a></li>
+          <span class="text-success"> 
+            <?php echo $_SESSION['nombre']; ?>
+          </span>
+          <span class="text-success">Rol: 
+            <?php echo $_SESSION['rol']; ?>
+          </span>
+            <a href="login.php" class="btn btn-danger">Cerrar sesión</a>
       </ul>
     </div><!--/.nav-collapse -->
   </div>

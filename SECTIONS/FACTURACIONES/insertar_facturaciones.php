@@ -30,7 +30,7 @@
                             <div class="mb-3">
                                 <fieldset disabled>
                                     <label for="id_cliente" class="form-label">ID Cliente</label>
-                                    <input type="text" id="id_cliente_insertado" name="id_cliente_insertado" class="form-control" placeholder="0">
+                                    <input type="text" id="id_cliente_insertado" name="id_cliente_insertado" class="form-control" placeholder="1">
                                 </fieldset>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="Estado" class="form-label">Estado de Factura</label>
-                                <select id="id_distrito_insertado" name="id_distrito_insertado" class="form-control" required>
+                                <select id="id_estado_insertado" name="id_estado_insertado" class="form-control" required>
                                       <option value="1">0</option> 
                                       <option value="1">1</option> 
                                 </select>
@@ -60,6 +60,7 @@
 
                     <input type="hidden" name="accion" value="insertar_facturaciones">
                     <input type="hidden" name="id_factura" value=0>
+                    <input type="hidden" name="id_cliente_insertado" value=1>
                     <br>
 
                     <div class="modal-footer">

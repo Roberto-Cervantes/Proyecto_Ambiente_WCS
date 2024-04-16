@@ -7,6 +7,12 @@ require_once "../DAL/funciones_almacenes.php";
 <head>
     <?php
     require_once "../INCLUDE/head.php";
+    session_start();
+
+    if (!isset($_SESSION['id_usuario'])) {
+    header("Location: ../login.php");
+    exit();
+    }
     ?>
 </head>
 

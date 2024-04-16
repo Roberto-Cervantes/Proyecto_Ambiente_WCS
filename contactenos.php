@@ -4,6 +4,12 @@
 <head>
     <?php
     require_once "INCLUDE/head.php";
+    session_start();
+
+    if (!isset($_SESSION['id_usuario'])) {
+    header("Location: ../login.php");
+    exit();
+    }
     ?>
 </head>
 
@@ -27,7 +33,7 @@
     <div class="carousel-inner">
 
       <div class="item active">
-        <img src="IMG/logo.png" alt="Los Angeles" style="width:50%;">
+        <img src="IMG/Roberto.png" alt="Los Angeles" style="width:15%;">
         <div class="carousel-caption">
           <h3>Roberto</h3>
           <p>Cervantes Castillo</p>
@@ -35,7 +41,7 @@
       </div>
 
       <div class="item">
-        <img src="IMG/logo.png" alt="Chicago" style="width:50%;">
+        <img src="IMG/logo.png" alt="Chicago" style="width:15%;">
         <div class="carousel-caption">
           <h3>Nombre</h3>
           <p>Apellidos</p>
@@ -43,7 +49,7 @@
       </div>
     
       <div class="item">
-        <img src="IMG/logo.png" alt="Chicago" style="width:50%;">
+        <img src="IMG/logo.png" alt="Chicago" style="width:15%;">
         <div class="carousel-caption">
           <h3>Nombre</h3>
           <p>Apellidos</p>
@@ -51,7 +57,7 @@
       </div>
 
       <div class="item">
-        <img src="IMG/logo.png" alt="Chicago" style="width:50%;">
+        <img src="IMG/logo.png" alt="Chicago" style="width:15%;">
         <div class="carousel-caption">
           <h3>Nombre</h3>
           <p>Apellidos</p>

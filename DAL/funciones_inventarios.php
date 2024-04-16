@@ -19,10 +19,19 @@ function getinventarios()
 function getinventariosById($id_inventario) // Cambiado el nombre de la función
 {
     global $conn;
-    $sql_select_inventarios = "select nombre from almacenes where id_Aa=$id_inventario"; // Aquí también parece haber un error en la consulta SQL
+    $sql_select_inventarios = "select nombre from almacenes where id_Aa=$id_inventario"; 
     $result = $conn->query($sql_select_inventarios);
     $row = $result->fetch_assoc();
     return $row['nombre'];
+}
+
+function getCantidadByProduct($id_inventario_editado) // Cambiado el nombre de la función
+{
+    global $conn;
+    $sql_select_inventarios = "select Cantidad_disponible from inventarios where id_inventario=$id_inventario_editado";
+    $result = $conn->query($sql_select_inventarios);
+    $row = $result->fetch_assoc();
+    return $row;
 }
 
 function getIdalmacenesinventarios($id_inventarios)
@@ -99,8 +108,9 @@ function insertarInventarios()
     
     try {
         global $conn;
-        $sql_insert_inventarios = "insert into inventarios values (NULL,'".$nombre_insertado."','".$almacenes_insertados."')";
-        //echo $sql_insert_inventarios;
+        $sql_insert_inventarios = "insert into inventarios values (NULL,'".$producto_id."','".
+        $almacen_id."','".$Ubicacion."','".$Cantidad_disponible."')";
+        echo $sql_insert_inventarios;
         $stmt = $conn->prepare($sql_insert_inventarios);
         $stmt->execute();
     } catch (PDOException $e) {
