@@ -12,26 +12,35 @@ function Desconectar()
 function getProductos()
 {
     global $conn;
+
+    // Query para seleccionar los productos
     $sql_select_productos = "SELECT id_producto, id_proveedor, codigo, nombre, descripcion, precio FROM productos";
+
+    // Ejecutar la consulta
     $result = $conn->query($sql_select_productos);
-    if ($result && $result->num_rows > 0) {
-        // Crear un array para almacenar los resultados
-        $productos = array();
-        // Iterar sobre los resultados y guardarlos en el array
-        while ($row = $result->fetch_assoc()) {
-            $productos[] = $row;
-        }
-        return $productos;
-    } elseif ($result) {
-        // No se encontraron productos, pero la consulta se ejecutó correctamente
-        echo "No se encontraron productos.";
-        return array(); // Devolver un array vacío en lugar de false
-    } else {
-        // La consulta no se ejecutó correctamente
+
+    // Verificar si la consulta se ejecutó correctamente
+    if ($result === false) {
+        // Si hay un error en la consulta, mostrar el mensaje de error
         echo "Error al buscar productos: " . $conn->error;
         return false;
     }
+
+    // Verificar si se encontraron resultados
+    if ($result->num_rows > 0) {
+        // Si hay resultados, almacenarlos en un array
+        $productos = array();
+        while ($row = $result->fetch_assoc()) {
+            $productos[] = $row;
+        }
+        // Devolver el array de productos
+        return $productos;
+    } else {
+        // Si no se encontraron resultados, devolver un array vacío
+        return array();
+    }
 }
+
 
 
 function getProveedores()
@@ -116,7 +125,7 @@ function editarProducto()
         // Realizar la actualización en la base de datos
         $sql_edit_productos = "UPDATE productos SET id_proveedor = ?, codigo = ?, nombre = ?, descripcion = ?, precio = ? WHERE id_producto = ?";
         $stmt = $conn->prepare($sql_edit_productos);
-        $stmt->bind_param('isssdi', $id_proveedor_editado, $codigo_editado, $nombre_editado, $descripcion_editada, $precio_editado, $id_producto); 
+        $stmt->bind_param('ssssss', $id_proveedor_editado, $codigo_editado, $nombre_editado, $descripcion_editada, $precio_editado, $id_producto); 
         $stmt->execute();
     } catch (PDOException $e) {
         echo "<br>" . $e->getMessage();
@@ -166,7 +175,7 @@ function insertarProducto()
         global $conn;
         $sql_insert_productos = "INSERT INTO productos (id_proveedor, codigo, nombre, descripcion, precio) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql_insert_productos);
-        $stmt->bind_param('sss', $_POST['proveedor_insertado'], $_POST['codigo_insertado'], $_POST['nombre_insertado'], $_POST['descripcion_insertado'], $_POST['precio_insertado']);
+        $stmt->bind_param('sssss', $_POST['proveedor_insertado'], $_POST['codigo_insertado'], $_POST['nombre_insertado'], $_POST['descripcion_insertado'], $_POST['precio_insertado']);
         $stmt->execute(); 
     } catch (PDOException $e) {
         echo "<br>" . $e->getMessage();

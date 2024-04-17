@@ -26,8 +26,8 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="mb-3">
-                                    <label for="id_proveedor" class="form-label">Proveedor</label>
-                                    <select class="form-control" id="id_proveedor" name="id_proveedor" required>
+                                    <label for="proveedor_insertado" class="form-label">Proveedor</label>
+                                    <select class="form-control" id="proveedor_insertado" name="proveedor_insertado" required>
                                         <option value="" selected disabled>Selecciona un proveedor</option>
                                         <?php
                                         $proveedores = getProveedores(); // Obtener la lista de proveedores
@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" name="accion" value="insertar_producto">
+                        <input type="hidden" name="accion" value="insertar_productos">
                         <input type="hidden" name="id_producto" value="0">
                         <br>
                         <div class="modal-footer">

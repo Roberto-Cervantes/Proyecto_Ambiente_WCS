@@ -21,17 +21,15 @@ require_once "../DAL/funciones_productos.php";
     include "../INCLUDE/nav.php";
     ?>
     <div class="container">
-        <div class="row">
+        <div class="producto">
             <h3>PRODUCTOS</h3>
         </div>
-        <div class="row">
+        <div class="producto">
             <p>
-                <?php
-                echo '<button type="button" class="btn btn-success" data-toggle="modal" 
-                data-target="#insertar">
-                <i class="fa fa-edit">Nuevo Producto</i></button>';
-                require "PRODUCTOS/insertar_productos.php";
-                ?>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#insertar">
+                    <i class="fa fa-edit">Nuevo Producto</i>
+                </button>
+                <?php require "PRODUCTOS/insertar_productos.php"; ?>
             </p>
             <table class="table table-striped table-bordered">
                 <thead>
@@ -45,29 +43,28 @@ require_once "../DAL/funciones_productos.php";
                     </tr>
                 </thead>
                 <tbody>
-
                     <?php
-                    $result = getProductos();
-                    if ($result->num_rows > 0) {
-                        foreach ($result as $row) {
+                    $productos = getProductos();
+                    if (!empty($productos)) {
+                        foreach ($productos as $producto) {
                             echo '<tr>';
-                            echo '<td>' . $row['id_producto'] . '</td>';
-                            echo '<td>' . getProveedorProducto($row['id_proveedor']) . '</td>';
-                            echo '<td>' . $row['nombre'] . '</td>';
-                            echo '<td>' . $row['codigo'] . '</td>';
-                            echo '<td>' . $row['precio'] . '</td>';
+                            echo '<td>' . $producto['id_producto'] . '</td>';
+                            echo '<td>' . getProveedorProducto($producto['id_proveedor']) . '</td>';
+                            echo '<td>' . $producto['nombre'] . '</td>';
+                            echo '<td>' . $producto['codigo'] . '</td>';
+                            echo '<td>' . $producto['precio'] . '</td>';
                             echo '<td width=250>';
                             echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
-                            data-target="#ver' . $row['id_producto'] . ' ">
-                            <i class="fa fa-edit ">Ver</i></button>';
+                        data-target="#ver' . $producto['id_producto'] . ' ">
+                        <i class="fa fa-edit ">Ver</i></button>';
                             echo ' ';
                             echo '<button type="button" class="btn btn-success" data-toggle="modal" 
-                            data-target="#editar' . $row['id_producto'] . ' ">
-                            <i class="fa fa-edit ">Actualizar</i></button>';
+                        data-target="#editar' . $producto['id_producto'] . ' ">
+                        <i class="fa fa-edit ">Actualizar</i></button>';
                             echo ' ';
                             echo '<button type="button" class="btn btn-danger" data-toggle="modal" 
-                            data-target="#borrar' . $row['id_producto'] . ' ">
-                            <i class="fa fa-edit ">Borrar</i></button>';
+                        data-target="#borrar' . $producto['id_producto'] . ' ">
+                        <i class="fa fa-edit ">Borrar</i></button>';
                             echo ' ';
                             echo '</td>';
                             require "PRODUCTOS/editar_productos.php";
@@ -76,18 +73,16 @@ require_once "../DAL/funciones_productos.php";
                             echo '</tr>';
                         }
                     } else {
-                        echo "No hay datos";
+                        echo "<tr><td colspan='6'>No hay datos</td></tr>";
                     }
-                    Desconectar();
                     ?>
                 </tbody>
             </table>
         </div>
     </div> <!-- /container -->
 
-    <?php
-    include "../INCLUDE/footer.php";
-    ?>
+    <?php include "../INCLUDE/footer.php"; ?>
 </body>
 
 </html>
+
