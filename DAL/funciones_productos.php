@@ -12,7 +12,7 @@ function Desconectar()
 function getProductos()
 {
     global $conn;
-    $sql_select_productos = "SELECT id_producto, id_proveedor,codigo, nombre,descripcion, precio FROM productos";
+    $sql_select_productos = "SELECT id_producto, id_proveedor, codigo, nombre, descripcion, precio FROM productos";
     $result = $conn->query($sql_select_productos);
     if ($result && $result->num_rows > 0) {
         // Crear un array para almacenar los resultados
@@ -22,19 +22,44 @@ function getProductos()
             $productos[] = $row;
         }
         return $productos;
-    } else {
+    } elseif ($result) {
+        // No se encontraron productos, pero la consulta se ejecutó correctamente
         echo "No se encontraron productos.";
+        return array(); // Devolver un array vacío en lugar de false
+    } else {
+        // La consulta no se ejecutó correctamente
+        echo "Error al buscar productos: " . $conn->error;
         return false;
     }
 }
 
-function getProductoProveedor($id_producto = null)
+
+function getProveedores()
 {
     global $conn;
-    if ($id_producto !== null) {
-        $sql_select_producto = "SELECT nombre FROM productos WHERE id_producto=?";
-        $stmt = $conn->prepare($sql_select_producto);
-        $stmt->bind_param('i', $id_producto);
+    $sql_select_proveedores = "SELECT id_proveedor, nombre FROM proveedores";
+    $result = $conn->query($sql_select_proveedores);
+    if ($result && $result->num_rows > 0) {
+        // Crear un array para almacenar los resultados
+        $proveedores = array();
+        // Iterar sobre los resultados y guardarlos en el array
+        while ($row = $result->fetch_assoc()) {
+            $proveedores[] = $row;
+        }
+        return $proveedores;
+    } else {
+        echo "No se encontraron proveedores.";
+        return false;
+    }
+}
+
+function getProveedorProducto($id_proveedor = null)
+{
+    global $conn;
+    if ($id_proveedor !== null) {
+        $sql_select_proveedor = "SELECT nombre FROM proveedores WHERE id_proveedor=?";
+        $stmt = $conn->prepare($sql_select_proveedor);
+        $stmt->bind_param('i', $id_proveedor);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
@@ -81,14 +106,17 @@ function editarProducto()
         global $conn;
         
         // Obtener los valores del formulario
+        $id_proveedor_editado = $id_proveedor_insertado;
+        $codigo_editado = $codigo_insertado; 
         $nombre_editado = $nombre_insertado;
-        $precio_editado = $precio_insertado; 
-        $id_producto = $_POST['id_producto']; // Agregar la obtención de id_producto
+        $descripcion_editada = $descripcion_insertado; 
+        $precio_editado = $precio_insertado;
+        $id_producto = $_POST['id_producto']; // Obtener el ID del producto
 
         // Realizar la actualización en la base de datos
-        $sql_edit_productos = "UPDATE productos SET nombre = ?, precio = ? WHERE id_producto = ?";
+        $sql_edit_productos = "UPDATE productos SET id_proveedor = ?, codigo = ?, nombre = ?, descripcion = ?, precio = ? WHERE id_producto = ?";
         $stmt = $conn->prepare($sql_edit_productos);
-        $stmt->bind_param('sss', $nombre_editado, $precio_editado, $id_producto); 
+        $stmt->bind_param('isssdi', $id_proveedor_editado, $codigo_editado, $nombre_editado, $descripcion_editada, $precio_editado, $id_producto); 
         $stmt->execute();
     } catch (PDOException $e) {
         echo "<br>" . $e->getMessage();
@@ -97,6 +125,7 @@ function editarProducto()
     $conn = null;
     header('Location: ../SECTIONS/productos.php');
 }
+
 
 function borrarProducto()
 {
@@ -135,9 +164,9 @@ function insertarProducto()
 
     try {
         global $conn;
-        $sql_insert_productos = "INSERT INTO productos (nombre, precio) VALUES (?, ?)";
+        $sql_insert_productos = "INSERT INTO productos (id_proveedor, codigo, nombre, descripcion, precio) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql_insert_productos);
-        $stmt->bind_param('ss', $_POST['nombre_insertado'], $_POST['precio_insertado']);
+        $stmt->bind_param('sss', $_POST['proveedor_insertado'], $_POST['codigo_insertado'], $_POST['nombre_insertado'], $_POST['descripcion_insertado'], $_POST['precio_insertado']);
         $stmt->execute(); 
     } catch (PDOException $e) {
         echo "<br>" . $e->getMessage();
@@ -146,4 +175,5 @@ function insertarProducto()
     $conn = null;
     header('Location: ../SECTIONS/productos.php');
 }
-?>
+
+

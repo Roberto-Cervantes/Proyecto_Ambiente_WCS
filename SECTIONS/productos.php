@@ -10,8 +10,8 @@ require_once "../DAL/funciones_productos.php";
     session_start();
 
     if (!isset($_SESSION['id_usuario'])) {
-    header("Location: ../login.php");
-    exit();
+        header("Location: ../login.php");
+        exit();
     }
     ?>
 </head>
@@ -29,19 +29,19 @@ require_once "../DAL/funciones_productos.php";
                 <?php
                 echo '<button type="button" class="btn btn-success" data-toggle="modal" 
                 data-target="#insertar">
-                <i class="fa fa-edit ">Nuevo producto</i></button>';
+                <i class="fa fa-edit">Nuevo Producto</i></button>';
                 require "PRODUCTOS/insertar_productos.php";
                 ?>
             </p>
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Id Producto</th>
-                        <th>Id proveedor</th>
-                        <th>codigo</th>
-                        <th>Nombre</th>
-                        <th>descripción</th>
-                        <th>precio</th>
+                        <th>ID Producto</th>
+                        <th>Proveedor</th>
+                        <th>Producto</th>
+                        <th>Código</th>
+                        <th>Precio</th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,9 +52,10 @@ require_once "../DAL/funciones_productos.php";
                         foreach ($result as $row) {
                             echo '<tr>';
                             echo '<td>' . $row['id_producto'] . '</td>';
-                            echo '<td>' . $row['codigo'] . '</td>';
+                            echo '<td>' . getProveedorProducto($row['id_proveedor']) . '</td>';
                             echo '<td>' . $row['nombre'] . '</td>';
-                            echo '<td>' . getProductoProveedor($row['id_proveedor']) . '</td>';
+                            echo '<td>' . $row['codigo'] . '</td>';
+                            echo '<td>' . $row['precio'] . '</td>';
                             echo '<td width=250>';
                             echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
                             data-target="#ver' . $row['id_producto'] . ' ">
