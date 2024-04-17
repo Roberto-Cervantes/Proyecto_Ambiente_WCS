@@ -10,8 +10,8 @@ require_once "../DAL/funciones_detallecompras.php";
     session_start();
 
     if (!isset($_SESSION['id_usuario'])) {
-    header("Location: ../login.php");
-    exit();
+         header("Location: ../login.php");
+        exit();
     }
     ?>
 </head>

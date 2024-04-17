@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar sesión</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    
 </head>
 <body>
 
@@ -26,6 +23,10 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Iniciar sesión</button>
             </form>
+            <p class="mt-3 text-center">
+                ¿No tienes usuario? 
+                <a href="registrar.php">Regístrate aquí</a>
+            </p>
         </div>
     </div>
 </div>

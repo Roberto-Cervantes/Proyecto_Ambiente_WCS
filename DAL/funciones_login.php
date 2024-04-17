@@ -41,4 +41,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['error'] = "Usuario o contraseña incorrectos";
     header("Location: ../login.php");
 }
-?>
+
