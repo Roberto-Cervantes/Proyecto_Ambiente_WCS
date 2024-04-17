@@ -12,7 +12,7 @@
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
                 <h3 class="modal-title" id="exampleModalLabel">Borrar Registro del Cliente
-                    <?php echo $row['nombre']; ?></h3>
+                    <?php echo $row['id_cliente']; ?></h3>
             </div>
             <div class="modal-body">
 
@@ -23,7 +23,7 @@
                             <div class="mb-3">
                                 <fieldset disabled>
                                     <label for="id_cliente">Id Cliente</label>
-                                    <input type="text" id="id_cliente" class="form-control" placeholder="<?php echo $row['id_cliente'] ?>">
+                                    <input type="text" id="id_cliente" class="form-control" value="<?php echo $row['id_cliente']; ?>" required>
                                 </fieldset>
                             </div>
 

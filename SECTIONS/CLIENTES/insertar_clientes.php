@@ -28,37 +28,59 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label for="nombre" class="form-label">Nombre Cliente</label>
-                                    <input type="text" id="nombre_insertado" name="nombre_insertado" class="form-control" value="" required>
-                                </div>
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre del Cliente</label>
+                                <input type="text" id="nombre_insertado" name="nombre_insertado" class="form-control" value="" required>
                             </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="apellidos" class="form-label">Apellidos del Cliente</label>
+                                <input type="text" id="apellidos_insertado" name="apellidos_insertado" class="form-control" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email del Cliente</label>
+                                <input type="email" id="email_insertado" name="email_insertado" class="form-control" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="telefono" class="form-label">Telefono del Cliente</label>
+                                <input type="text" id="telefono_insertado" name="telefono_insertado" class="form-control" value="" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-sm-6">
+                              <label for="">Provincia</label>
+                                <select id="slt-provincias" name="provincia_insertado" class="form-control" value="" required>>
+                                   <option value="">Seleccione una provincia</option>
+                                </select>
+                            </div>
+                        </div>  
+                        <div class="row">
                             <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label for="apellido" class="form-label">Apellido del Cliente</label>
-                                    <input type="text" id="apellido_insertado" name="apellido_insertado" class="form-control" value="" required>
-                                </div>
+                                <label for="">Canton</label>
+                                   <select id="slt-cantones" name="canton_insertado" class="form-control" value="" required>>
+                                       <option value="">Seleccione un cantón</option>
+                                    </select>
                             </div>
+                        </div>     
+                        <div class="row">
                             <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <fieldset disabled>
-                                        <label for="id_distrito" class="form-label">ID Distrito</label>
-                                        <input id="id_distrito_insertado" name="id_distrito_insertado" class="form-control" placeholder="0">
-                                    </fieldset>
-                                </div>
+                                <label for="">Distrito</label>
+                                    <select id="slt-distritos" name="distrito_insertado" class="form-control" value="" required>>
+                                        <option  value="">Seleccione un distrito</option>
+                                    </select>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label for="telefono" class="form-label">Telefono del Cliente</label>
-                                    <input type="text" id="telefono_insertado" name="telefono_insertado" class="form-control" value="" required>
-                                </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                            <label for="direccion" class="form-label">Dirección del Cliente</label>
+                                <input type="text" id="direccion_insertado" name="direccion_insertado" class="form-control"  value="" required>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email del Cliente</label>
-                                    <input type="email" id="email_insertado" name="email_insertado" class="form-control" value="" required>
-                                </div>
-                            </div>
+                        </div>
                         </div>
                         <input type="hidden" name="accion" value="insertar_clientes">
                         <input type="hidden" name="id_cliente" value="0">
@@ -72,7 +94,8 @@
             </div>
         </div>
     </div>
-
+    <script src="../INCLUDE/js/distribucion-cr.js"></script> 
+    <script src="../INCLUDE/js/formulario.js"></script>    
 </body>
 
 </html>

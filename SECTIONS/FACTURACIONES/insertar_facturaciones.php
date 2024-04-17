@@ -11,70 +11,61 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
-                <h3 class="modal-title" id="exampleModalLabel">Insertar factura del Cliente
+                <h3 class="modal-title" id="exampleModalLabel">Insertar factura del Cliente</h3>
             </div>
             <div class="modal-body">
-
                 <form action="../DAL/funciones_facturaciones.php" method="POST">
-
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <fieldset disabled>
-                                    <label for="id_factura">Id Factura</label>
-                                    <input type="text" id="id_factura" class="form-control" placeholder="0">
-                                </fieldset>
+                                <label for="cliente_insertado" class="form-label">Cliente</label>
+                                <select class="form-control form-select form-select-lg mb-3" name="cliente_insertado" id="cliente_insertado" aria-label="Large select example">
+                                    <?php
+                                    $result = getClientes();
+                                    if (count($result) > 0) {
+                                        foreach ($result as $rw) {
+                                            echo '<option value="' . $rw[0] . '">' . $rw[1] . '</option>';
+                                        }
+                                    } else {
+                                        echo "No hay datos";
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <fieldset disabled>
-                                    <label for="id_cliente" class="form-label">ID Cliente</label>
-                                    <input type="text" id="id_cliente_insertado" name="id_cliente_insertado" class="form-control" placeholder="1">
-                                </fieldset>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                           <div class="mb-3">
-                               <label for="fecha" class="form-label">Fecha</label>
-                               <input type="date" id="fecha_insertado" name="fecha_insertado" class="form-control" placeholder="YYYY-MM-DD" required>
+                                <label for="fecha_insertado" class="form-label">Fecha</label>
+                                <input type="date" id="fecha_insertado" name="fecha_insertado" class="form-control" placeholder="YYYY-MM-DD" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="total" class="form-label">Total</label>
+                                <label for="total_insertado" class="form-label">Total</label>
                                 <input type="text" id="total_insertado" name="total_insertado" class="form-control" value="" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="Estado" class="form-label">Estado de Factura</label>
-                                <select id="id_estado_insertado" name="id_estado_insertado" class="form-control" required>
-                                      <option value="1">0</option> 
-                                      <option value="1">1</option> 
+                                <label for="Estado_insertado" class="form-label">Estado de Factura</label>
+                                <select id="Estado_insertado" name="Estado_insertado" class="form-control" required>
+                                      <option value="Pagado">Pagado</option> 
+                                      <option value="Pendiente">Pendiente</option> 
                                 </select>
                             </div>
                         </div>
-                       
                     </div>
-
                     <input type="hidden" name="accion" value="insertar_facturaciones">
-                    <input type="hidden" name="id_factura" value=0>
-                    <input type="hidden" name="id_cliente_insertado" value=1>
+                    <input type="hidden" name="id_factura" value="0">
                     <br>
-
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">insertar</button>
+                        <button type="submit" class="btn btn-primary">Insertar</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     </div>
-
+                </form>
             </div>
-
-
-            </form>
         </div>
     </div>
 </div>
-</div>
 
-</html> 
+</html>

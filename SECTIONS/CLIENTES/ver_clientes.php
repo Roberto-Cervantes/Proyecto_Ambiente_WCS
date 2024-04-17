@@ -23,7 +23,7 @@
                             <div class="mb-3">
                                 <fieldset disabled>
                                     <label for="id_cliente">Id Cliente</label>
-                                    <input type="text" id="id_cliente" class="form-control" placeholder="0">
+                                    <input type="text" id="id_cliente" class="form-control" value="<?php echo $row['id_cliente']; ?>" required>
                                 </fieldset>
                             </div>
                         </div>
@@ -39,16 +39,16 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                <label for="apellido" class="form-label">Apellido del Cliente</label>
-                                <input type="text" id="apellido_editado" name="apellido_editado" class="form-control" value="<?php echo $row['apellido']; ?>" required>
+                                <label for="apellidos" class="form-label">Apellido del Cliente</label>
+                                <input type="text" id="apellidos_editado" name="apellidos_editado" class="form-control" value="<?php echo $row['apellidos']; ?>" required>
                                 </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                <label for="id_distrito" class="form-label">ID Distrito del Cliente</label>
-                                <input type="text" id="id_distrito_editado" name="id_distrito_editado" class="form-control" value="<?php echo $row['id_distrito']; ?>" required>
+                                <label for="email" class="form-label">Email del Cliente</label>
+                                <input type="email" id="email_editado" name="email_editado" class="form-control" value="<?php echo $row['email']; ?>" required>
                                 </fieldset>
                             </div>
                         </div>
@@ -63,8 +63,38 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                <label for="email" class="form-label">Email del Cliente</label>
-                                <input type="text" id="email_editado" name="email_editado" class="form-control" value="<?php echo $row['email']; ?>" required>
+                                <label for="">Provincia</label>
+                                <select id="slt-provincias" name="provincia_editado" class="form-control" value="" required>
+                                   <option value=""><?php echo $row['nombre_provincia']; ?></option>
+                                </select>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <fieldset disabled>
+                                <label for="">Canton</label>
+                                   <select id="slt-cantones" name="canton_editado" class="form-control" value="" required>
+                                       <option value=""><?php echo $row['nombre_canton']; ?></option>
+                                    </select>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <fieldset disabled>
+                                <label for="">Distrito</label>
+                                    <select id="slt-distritos" name="distrito_editado" class="form-control" value="" required>
+                                        <option value=""><?php echo $row['nombre_distrito']; ?></option>
+                                    </select>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <fieldset disabled>
+                                <label for="direccion" class="form-label">Dirección del Cliente</label>
+                                <input type="text" id="direccion_editado" name="direccion_editado" class="form-control"  value="<?php echo $row['direccion']; ?>" required>
                                 </fieldset>
                             </div>
                         </div>

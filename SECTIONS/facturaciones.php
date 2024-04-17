@@ -17,7 +17,7 @@ require_once "../DAL/funciones_facturaciones.php";
 </head>
 
 <body>
-    <?php
+<?php
     include "../INCLUDE/nav.php";
     ?>
     <div class="container">
@@ -37,7 +37,10 @@ require_once "../DAL/funciones_facturaciones.php";
                 <thead>
                     <tr>
                         <th>Id Factura</th>
-                        <th>Nombre</th>
+                        <th>Nombre del Cliente</th>
+                        <th>Apellidos del Cliente</th>
+                        <th>Total</th>
+                        <th>Estado</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -49,7 +52,10 @@ require_once "../DAL/funciones_facturaciones.php";
                         foreach ($result as $row) {
                             echo '<tr>';
                             echo '<td>' . $row['id_factura'] . '</td>';
-                            echo '<td>' . $row['nombre'] . '</td>';
+                            echo '<td>' . getNombreCliente($row['cliente_id']) . '</td>';
+                            echo '<td>' . getApellidosCliente($row['cliente_id']) . '</td>';
+                            echo '<td>' . $row['total'] . '</td>';
+                            echo '<td>' . $row['Estado'] . '</td>';
                             echo '<td width=250>';
                             echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
                             data-target="#ver' . $row['id_factura'] . ' ">
@@ -83,5 +89,4 @@ require_once "../DAL/funciones_facturaciones.php";
     include "../INCLUDE/footer.php";
     ?>
 </body>
-
 </html>

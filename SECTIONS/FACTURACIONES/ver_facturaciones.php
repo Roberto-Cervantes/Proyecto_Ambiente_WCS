@@ -16,65 +16,69 @@
             </div>
             <div class="modal-body">
 
-                <form action="../DAL/funciones_facturaciones.php" method="POST">
+                <form>
 
                     <div class="row">
-                    <div class="col-sm-6">
-                            <div class="mb-3">
-                                <fieldset disabled>
-                                    <label for="id_factura">Id Facturaciones</label>
-                                    <input type="text" id="id_factura" class="form-control" placeholder="0">
-                                </fieldset>
-                            </div>
-                        </div>
-
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                <label for="cliente_id" class="form-label">ID Cliente</label>
-                                <input type="text" id="cliente_id_editado" name="cliente_id_editado" class="form-control" value="<?php echo $row['cliente_id']; ?>" required>
+                                    <label for="id_factura">ID Facturaciones</label>
+                                    <input type="text" id="id_factura" class="form-control" placeholder="<?php echo $row['id_factura']; ?>">
                                 </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
+                                <label for="cliente_editado" class="form-label">Cliente</label>
+                                <select class="form-control form-select form-select-lg mb-3" name="cliente_editado" id="cliente_editado" aria-label="Large select example">
+                                    <?php
+                                    $result = getClientes();
+                                    if (count($result) > 0) {
+                                        foreach ($result as $rw) {
+                                            echo '<option value="' . $rw[0] . '"';
+                                            if ($rw[0] == $row['cliente_id']) echo ' selected';
+                                            echo '>' . $rw[1] . '</option>';
+                                        }
+                                    } else {
+                                        echo "No hay datos";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
                                 <fieldset disabled>
-                                <label for="fecha" class="form-label">Fecha</label>
-                                <input type="text" id="fecha_editado" name="fecha_editado" class="form-control" value="<?php echo $row['fecha']; ?>" required>
+                                    <label for="fecha" class="form-label">Fecha</label>
+                                    <input type="text" id="fecha_editado" name="fecha_editado" class="form-control" value="<?php echo $row['fecha']; ?>" required>
                                 </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                <label for="toatl" class="form-label">Total</label>
-                                <input type="text" id="total_editado" name="total_editado" class="form-control" value="<?php echo $row['total']; ?>" required>
+                                    <label for="total" class="form-label">Total</label>
+                                    <input type="text" id="total_editado" name="total_editado" class="form-control" value="<?php echo $row['total']; ?>" required>
                                 </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                <label for="estado" class="form-label">Estado</label>
-                                <input type="text" id="estado_editado" name="estado_editado" class="form-control" value="<?php echo $row['Estado']; ?>" required>
+                                    <label for="estado" class="form-label">Estado</label>
+                                    <input type="text" id="estado_editado" name="estado_editado" class="form-control" value="<?php echo $row['Estado']; ?>" required>
                                 </fieldset>
                             </div>
                         </div>
                     </div>
-
-                    <input type="hidden" name="accion" value="ver_clientes">
-                    <input type="hidden" name="id_factura" value="<?php echo $row['id_factura'] ?>">
-                    <input type="hidden" name="cliente_id" value="<?php echo $row['cliente_id']; ?>">
-                    <br>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                     </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
-</div>
 </div>
 
 </html>

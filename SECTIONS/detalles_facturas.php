@@ -10,14 +10,14 @@ require_once "../DAL/funciones_detalles_facturas.php";
     session_start();
 
     if (!isset($_SESSION['id_usuario'])) {
-    header("Location: ../login.php");
-    exit();
+        header("Location: ../login.php");
+        exit();
     }
     ?>
 </head>
 
 <body>
-    <?php
+<?php
     include "../INCLUDE/nav.php";
     ?>
     <div class="container">
@@ -36,20 +36,24 @@ require_once "../DAL/funciones_detalles_facturas.php";
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Id Detalle</th>
-                        <th>Id Factura
+                        <th>ID Detalle</th>
+                        <th>ID Factura</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <?php
-                    $result = getDetalles_facturas();
+                    $result = getDetalles_Facturas();
                     if ($result->num_rows > 0) {
                         foreach ($result as $row) {
                             echo '<tr>';
                             echo '<td>' . $row['id_detalle_number'] . '</td>';
                             echo '<td>' . $row['factura_id_number'] . '</td>';
+                            echo '<td>' . getNombreProducto($row['producto_id']) . '</td>';
+                            echo '<td>' . $row['cantidad'] . '</td>';
                             echo '<td width=250>';
                             echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
                             data-target="#ver' . $row['id_detalle_number'] . ' ">

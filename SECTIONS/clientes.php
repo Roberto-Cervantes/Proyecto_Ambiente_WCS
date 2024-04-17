@@ -5,6 +5,7 @@ require_once "../DAL/funciones_clientes.php";
 <html lang="en">
 
 <head>
+
     <?php
     require_once "../INCLUDE/head.php";
     session_start();
@@ -14,10 +15,12 @@ require_once "../DAL/funciones_clientes.php";
     exit();
     }
     ?>
+
 </head>
 
 <body>
-    <?php
+
+<?php
     include "../INCLUDE/nav.php";
     ?>
     <div class="container">
@@ -38,6 +41,7 @@ require_once "../DAL/funciones_clientes.php";
                     <tr>
                         <th>Id Cliente</th>
                         <th>Nombre</th>
+                        <th>Apellidos</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -50,6 +54,7 @@ require_once "../DAL/funciones_clientes.php";
                             echo '<tr>';
                             echo '<td>' . $row['id_cliente'] . '</td>';
                             echo '<td>' . $row['nombre'] . '</td>';
+                            echo '<td>' . $row['apellidos'] . '</td>';
                             echo '<td width=250>';
                             echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
                             data-target="#ver' . $row['id_cliente'] . ' ">

@@ -12,7 +12,7 @@
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
                 <h3 class="modal-title" id="exampleModalLabel">Borrar Factura del Cliente
-                    <?php echo $row['id_factura']; ?></h3>
+                <?php echo $row['nombre']; ?></h3>
             </div>
             <div class="modal-body">
 
@@ -28,13 +28,23 @@
                             </div>
 
                         </div>
-
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <fieldset disabled>
-                                    <label for="cliente-id" class="form-label">ID Cliente</label>
-                                    <input type="text" id="cliente_id_editado" name="cliente_id_editado" class="form-control" value="<?php echo $row['cliente_id']; ?>" required>
-                                </fieldset>
+                                <label for="cliente_editado" class="form-label">Cliente</label>
+                                <select class="form-control form-select form-select-lg mb-3" name="cliente_editado" id="cliente_editado" aria-label="Large select example">
+                                    <?php
+                                    $result = getClientes();
+                                    if (count($result) > 0) {
+                                        foreach ($result as $rw) {
+                                            echo '<option value="' . $rw[0] . '"';
+                                            if ($rw[0] == $row['cliente_id']) echo ' selected';
+                                            echo '>' . $rw[1] . '</option>';
+                                        }
+                                    } else {
+                                        echo "No hay datos";
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -49,13 +59,9 @@
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     </div>
 
+                </form>
             </div>
-
-
-            </form>
         </div>
     </div>
 </div>
-</div>
-
 </html>
