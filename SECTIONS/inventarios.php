@@ -22,57 +22,56 @@ require_once "../DAL/funciones_inventarios.php";
     ?>
     <div class="container">
         <div class="row">
-            <h3>INVENTARIOS</h3>
+            <h3>INVENTARIO</h3>
         </div>
         <div class="row">
             <p>
                 <?php
                 echo '<button type="button" class="btn btn-success" data-toggle="modal" 
                 data-target="#insertar">
-                <i class="fa fa-edit ">Nuevo Inventario</i></button>';
+                <i class="fa fa-edit ">Registrar Inventario</i></button>';
                 require "INVENTARIOS/insertar_inventarios.php";
                 ?>
             </p>
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Id Inventario</th>
-                        <th>Id Almacén</th>
-                        <th>Cantidad disponible</th>
+                        <th>Id</th>
                         <th>Producto</th>
-                        <th>Ubicación</th>
-                       
+                        <th>Almacen</th>
+                        <th>Ubicacion</th>
+                        <th>Cantidad Disp</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    <?php 
+                    <?php
                     $result = getInventarios();
                     if ($result->num_rows > 0) {
                         foreach ($result as $row) {
                             echo '<tr>';
                             echo '<td>' . $row['id_inventario'] . '</td>';
-                            echo '<td>' . $row['producto_id'] . '</td>';
-                            echo '<td>' . getCantidadByProduct($row['producto_id']) . '</td>';
-                            echo '<td>' . $row['Ubicacion'] . '</td>';
-                            echo '<td>' . $row['Cantidad_disponible'] . '</td>';
+                            echo '<td>' . $row['nombre_producto'] . '</td>';
+                            echo '<td>' . ($row['nombre_almacen']) . '</td>';
+                            echo '<td>' . ($row['ubicacion']) . '</td>';
+                            echo '<td>' . ($row['cant_disp']) . '</td>';
                             echo '<td width=250>';
-                            /*echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
-                            data-target="#ver' . $row['id_inventarios'] . ' ">
+                            echo '<button type="button" class="btn btn-primary" data-toggle="modal" 
+                            data-target="#ver' . $row['id_inventario'] . ' ">
                             <i class="fa fa-edit ">Ver</i></button>';
                             echo ' ';
                             echo '<button type="button" class="btn btn-success" data-toggle="modal" 
-                            data-target="#editar' . $row['id_inventarios'] . ' ">
+                            data-target="#editar' . $row['id_inventario'] . ' ">
                             <i class="fa fa-edit ">Actualizar</i></button>';
                             echo ' ';
                             echo '<button type="button" class="btn btn-danger" data-toggle="modal" 
-                            data-target="#borrar' . $row['id_inventarios'] . ' ">
+                            data-target="#borrar' . $row['id_inventario'] . ' ">
                             <i class="fa fa-edit ">Borrar</i></button>';
                             echo ' ';
                             echo '</td>';
                             require "INVENTARIOS/editar_inventarios.php";
                             require "INVENTARIOS/ver_inventarios.php";
-                            require "INVENTARIOS/borrar_inventarios.php";*/
+                            require "INVENTARIOS/borrar_inventarios.php";
                             echo '</tr>';
                         }
                     } else {
