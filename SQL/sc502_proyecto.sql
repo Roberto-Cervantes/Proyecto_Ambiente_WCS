@@ -35,7 +35,7 @@ clientes	CREATE TABLE `clientes` (
 compras	CREATE TABLE `compras` (
  `id_compra` int(11) NOT NULL AUTO_INCREMENT,
  `id_producto` int(11) NOT NULL,
- `fecha date` date NOT NULL,
+ `fechas` date NOT NULL,
  `estado` tinyint(1) NOT NULL,
  PRIMARY KEY (`id_compra`),
  KEY `id_producto` (`id_producto`) USING BTREE,
