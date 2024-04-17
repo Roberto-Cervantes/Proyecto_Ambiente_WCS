@@ -21,53 +21,71 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                    <label for="id_inv">Id Inventario</label>
+                                    <label for="id_inventario">Id Inv.</label>
                                     <input type="text" id="id_inventario" class="form-control" placeholder="0">
                                 </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="product" class="form-label">Id Producto</label>
-                                <input type="text" id="producto_id_insertado" name="producto_id_insertado" 
-                                class="form-control" value="" required>
+                                <label for="producto_insertado" class="form-label">Productos</label>
+                                <select class="form-control form-select form-select-lg mb-3" name="producto_id" aria-label="Large select example">
+                                    <?php
+                                    $result = getProductos();
+                                    if (count($result[0]) > 0) {
+                                        foreach ($result as $rw) {
+                                            echo '<option value="' . $rw[0] . '">' . $rw[1] . '</option>';
+                                        }
+                                    } else {
+                                        echo "No hay datos";
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="almacen" class="form-label">Id Almacén</label>
-                                <input type="text" id="almacen_id_insertado" name="almacen_id_insertado" 
-                                class="form-control" value="" required>
+                                <label for="almacen_insertado" class="form-label">Almacenes</label>
+                                <select class="form-control form-select form-select-lg mb-3" name="almacen_id" aria-label="Large select example">
+                                    <?php
+                                    $result = getAlmacenes();
+                                    if (count($result[0]) > 0) {
+                                        foreach ($result as $rw) {
+                                            echo '<option value="' . $rw[0] . '">' . $rw[1] . '</option>';
+                                        }
+                                    } else {
+                                        echo "No hay datos";
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="Ubicacion" class="form-label">Ubicacion</label>
-                                <input type="text" id="Ubicacion_insertado" name="Ubicacion_insertado" 
-                                class="form-control" value="" required>
+                                <label for="nombre-ubicacion">Ubicacion</label>
+                                <input type="text" id="ubicacion" name="ubicacion" class="form-control" placeholder="">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="Cant" class="form-label">Cantidad disponible</label>
-                                <input type="text" id="Cantidad_insertado" name="Cantidad_insertado" 
-                                class="form-control" value="" required>
+                                <label for="total_cant_disp">Cantidad Disp</label>
+                                <input type="text" id="cant_disp" name="cant_disp" class="form-control" placeholder="">
                             </div>
                         </div>
                     </div>
+
+                    <input type="hidden" name="accion" value="insertar_inventarios">
+                    <input type="hidden" name="id_inventario" value=0>
+                    <br>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">insertar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    </div>
             </div>
-        </div>
-        <input type="hidden" name="accion" value="insertar_inventarios">
-        <input type="hidden" name="id_inventario" value="0">
-        <br>
-        <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">insertar</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </form>
         </div>
     </div>
-    </form>
-</div>
-</div>
 </div>
 </div>
 

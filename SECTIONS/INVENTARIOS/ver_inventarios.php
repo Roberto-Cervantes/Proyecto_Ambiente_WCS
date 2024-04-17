@@ -7,63 +7,98 @@
     ?>
 </head>
 
-<div class="modal fade" id="ver<?php echo $row['id_inventarios']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ver<?php echo $row['id_inventario']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
                 <h3 class="modal-title" id="exampleModalLabel">Ver Registro
-                    <?php echo $row['nombre']; ?></h3>
             </div>
             <div class="modal-body">
 
                 <form action="../DAL/funciones_inventarios.php" method="POST">
 
                     <div class="row">
-                    <div class="col-sm-6">
+                        <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                    <label for="id_inventario">Id Inventario</label>
-                                    <input type="text" id="id_inventario_editado" class="form-control" placeholder="<?php echo $row['id_inventario'] ?>">
+                                    <label for="id_inventario">Id Inv.</label>
+                                    <input type="text" id="inventario_id_editado" class="form-control" placeholder="<?php echo $row['id_inventario'] ?>">
                                 </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                    <label for="almacen_id" class="form-label">Id Almacén</label>
-                                    <input type="text" id="almacen_id_editado" name="almacen_id_editado" class="form-control" value="<?php echo $row['almacen_id']; ?>" required>
+                                    <label for="producto_editado" class="form-label">Productos</label>
+                                    <select class="form-control form-select form-select-lg mb-3" name="producto_id_editado" aria-label="Large select example">
+                                        <?php
+                                        $result = getProductos();
+                                        $id_prov = $row['id_producto'];
+                                        if (count($result[0]) > 0) {
+                                            foreach ($result as $rw) {
+                                                if ($rw[0] == $id_prov) {
+                                                    echo '<option value="' . $rw[0] . '" selected>' . $rw[1] . '</option>';
+                                                } else {
+                                                    echo '<option value="' . $rw[0] . '">' . $rw[1] . '</option>';
+                                                }
+                                            }
+                                        } else {
+                                            echo "No hay datos";
+                                        }
+                                        ?>
+                                    </select>
                                 </fieldset>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                    <label for="Cantidad_disponible" class="form-label">Cantidad disponible</label>
-                                    <input type="text" id="Cantidad_disponible" name="Cantidad_disponible" class="form-control" 
-                                    value="<?php echo getInventarios($row['Cantidad_disponible']); ?>" required>
+                                    <label for="almacen_editado" class="form-label">Almacenes</label>
+                                    <select class="form-control form-select form-select-lg mb-3" name="almacen_id_editado" aria-label="Large select example">
+                                        <?php
+                                        $result = getAlmacenes();
+                                        $id_prov = $row['almacen_id'];
+                                        if (count($result[0]) > 0) {
+                                            foreach ($result as $rw) {
+                                                if ($rw[0] == $id_prov) {
+                                                    echo '<option value="' . $rw[0] . '" selected>' . $rw[1] . '</option>';
+                                                } else {
+                                                    echo '<option value="' . $rw[0] . '">' . $rw[1] . '</option>';
+                                                }
+                                            }
+                                        } else {
+                                            echo "No hay datos";
+                                        }
+                                        ?>
+                                    </select>
                                 </fieldset>
                             </div>
                         </div>
-                    
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <fieldset disabled>
-                                    <label for="producto_id" class="form-label">Productos</label>
-                                    <input type="text" id="producto_id" name="producto_id" class="form-control" 
-                                    value="<?php echo getInventarios($row['producto_id']); ?>" required>
+                                    <label for="nombre-ubicacion">Ubicacion</label>
+                                    <input type="text" id="nombre_ubicacion" name="nombre_ubicacion" class="form-control" value="<?php echo $row['ubicacion'] ?>">
                                 </fieldset>
                             </div>
                         </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <fieldset disabled>
+                                    <label for="total_cant_disp">Cantidad Disp</label>
+                                    <input type="text" id="cant_disp_editado" name="cant_disp_editado" class="form-control" value="<?php echo $row['cant_disp'] ?>">
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
 
-                        <input type="hidden" name="accion" value="ver_inventarios">
-                    <input type="hidden" name="id_inventarios" value="<?php echo $row['id_inventarios'] ?>">
-                    <input type="hidden" name="Cantidad_disponible" value="<?php echo $row['Cantidad_disponible']; ?>">
-                    <input type="hidden" name="producto_id" value="<?php echo $row['producto_id']; ?>">
-                    <input type="hidden" name="Ubicacion" value="<?php echo $row['Ubicacion']; ?>">
+                    <input type="hidden" name="accion" value="">
+                    <input type="hidden" name="inventario_id_editado" value="<?php echo $row['id_inventario'] ?>">
                     <br>
 
+
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     </div>
             </div>
             </form>

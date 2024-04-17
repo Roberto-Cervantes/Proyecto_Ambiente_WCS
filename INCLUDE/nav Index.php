@@ -8,16 +8,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="">Menu Principal</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="index.php">Home</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-          aria-haspopup="true" aria-expanded="false">Transacciones <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transacciones <span class="caret"></span></a>
           <ul class="dropdown-menu">
-          <li role="separator" class="divider"></li>
+            <li role="separator" class="divider"></li>
             <li class="dropdown-header">Compras</li>
             <li><a href="SECTIONS/compras.php">Registrar Compra</a></li>
             <li role="separator" class="divider"></li>
@@ -29,10 +27,9 @@
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-          aria-haspopup="true" aria-expanded="false">Parametros <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Parametros <span class="caret"></span></a>
           <ul class="dropdown-menu">
-          <li role="separator" class="divider"></li>
+            <li role="separator" class="divider"></li>
             <li class="dropdown-header">Administrativas</li>
             <li><a href="SECTIONS/provincias.php">Provincias</a></li>
             <li><a href="SECTIONS/cantones.php">Cantones</a></li>
@@ -49,13 +46,13 @@
         </li>
         <li><a href="nosotros.php">Nosotros</a></li>
         <li><a href="contactenos.php">Contactenos</a></li>
-          <span class="text-success"> 
-            <?php echo $_SESSION['nombre']; ?>
-          </span>
-          <span class="text-success">Rol: 
-            <?php echo $_SESSION['rol']; ?>
-          </span>
-            <a href="login.php" class="btn btn-danger">Cerrar sesión</a>
+        <span class="text-success">
+          <?php echo $_SESSION['nombre']; ?>
+        </span>
+        <span class="text-success">Rol:
+          <?php echo $_SESSION['rol']; ?>
+        </span>
+        <a href="login.php" class="btn btn-danger">Cerrar sesión</a>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
